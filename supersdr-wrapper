@@ -13,7 +13,7 @@
 # "Raleigh area SDR on 300 foot longwire" raleigh.twrmon.net 8073 10000
 #
 # specify the bookmarks file
-BOOKMARKS_FILE="/home/user/supersdr/kiwiservers"
+BOOKMARKS_FILE="/home/user/kiwidata/kiwiservers"
 stripper_path="/home/user/stripper"
 
 ###############################################################################
