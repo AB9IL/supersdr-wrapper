@@ -38,3 +38,8 @@ fzf
 ```
 
 SuperSDR Wrapper requires a minimum of Python3 and Rofi. Selecting KiwiSDR servers from the command line requires fzf.
+
+#### IMPORTANT
+The _supersdr-wrapper_ and _stripper_ should be placed in your *path*.
+
+Inside the scripts, you must edit the proper paths for the data files and lists. Data wrangling happens in te directory _kiwidata_. Processed data must be written to the file _kiwiservers_ in directory _supersdr_. You can keep directories _supersdr_ and _kiwidata_ anywhere you want, but be sure to set proper paths in the scripts.
