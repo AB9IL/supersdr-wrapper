@@ -14,7 +14,7 @@
 from kiwisdr_stripped import dictlist
 
 # supersdr database
-supersdr_file = "/home/user/supersdr/kiwiservers"
+supersdr_file = "/home/user/kiwidata/kiwiservers"
 
 # default frequency for SDR startup
 default_freq = "10000.00"
