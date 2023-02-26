@@ -19,6 +19,10 @@ supersdr_file = "/home/user/supersdr/kiwiservers"
 # default frequency for SDR startup
 default_freq = "10000.00"
 
+###############################################################################
+#       Edit the variables above; avoid editing the code below
+###############################################################################
+
 # filter the list of dictionaries by snr
 listcount = 70
 min_snr = 19
