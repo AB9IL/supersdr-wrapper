@@ -9,22 +9,22 @@ A wrapper saves time. Do you really want to bumble around with a long string of 
 #### Usage
 
 With no command line arguments, the list will be produced by fzf:
-```
+```bash
 $  supersdr-wrapper
 ```
 
 To pull up a list of servers in Rofi, use the _gui_ argument:
-```
+```bash
 $  supersdr-wrapper gui
 ```
 
 If SuperSDR freezes or locks up, eliminate the processes with the _kill_ argument:
-```
-supersdr kill
+```bash
+$  supersdr kill
 ```
 
 To update the list, use the stripper utility:
-```
+```bash
 $  stripper
 ```
 
