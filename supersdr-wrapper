@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Copyright (c) 2023 by Philip Collier, github.com/AB9IL
+# This script is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version. There is NO warranty; not even for
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# Read from a list of KiwiSDR sites and open a stream in SuperSDR.
+#
+# Example bookmark syntax: "description" domain port frequency
+# "Raleigh area SDR on 300 foot longwire" raleigh.twrmon.net 8073 10000
+#
+# specify the bookmarks file
+BOOKMARKS_FILE="/home/user/supersdr/kiwiservers"
+stripper_path="/home/user/stripper"
+
+###############################################################################
+# CAUTION: DRAGONS LIVE BELOW THIS LINE
+###############################################################################
+start_radio(){
+for target in field; do
+    # extract url fragments from target
+    read -r domain port frequency dummy <<< "$field"
+done
+
+# open the client and connect to the SDR server
+(cd /usr/local/src/supersdr || exit; python3 ./supersdr.py --kiwiserver "$domain" --kiwiport "$port" -f "$frequency")
+
+kill_radio
+}
+
+kill_radio(){
+    # kill the processes after SuperSDR stops
+    pkill -9 -f supersdr.py
+    exit 0
+}
+
+# if no bookmarks, quit
+[[ -z "$BOOKMARKS_FILE" ]] && echo "No bookmarks file, exiting..." && exit 0
+
+# if bookmarks are old, perform an update
+ [[ $(date +%s -r "$BOOKMARKS_FILE") -lt $(date +%s --date="1 hour ago") ]] && $stripper_path && \
+     sleep 20
+
+# read the bookmarks
+readarray SERVERS < $BOOKMARKS_FILE
+
+# open a menu
+[[ "$1" == "gui" ]] && COMMAND="rofi -dmenu -p Select -lines 20"
+[[ "$1" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
+[[ "$1" == "kill" ]] && kill_radio
+
+# Select the desired server
+CHOICE=$(echo "${SERVERS[@]}" | sed '/^$/d;/#.*/d' | awk '{printf $0"\n"}' | $COMMAND )
+
+# Exit if nothing selected
+[[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0
+
+field=$(echo $CHOICE | awk -F\" '{printf $3"\n"}')
+[[ -z "$field"  ]] || start_radio &
+
