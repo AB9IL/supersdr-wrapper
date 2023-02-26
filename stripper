@@ -35,9 +35,9 @@ curent_path = "/home/user/kiwidata/" + current_list
 stripped_path = "/home/user/kiwidata/" + stripped_list
 sorter_path = "/home/user/kiwidata/" + sorter_script
 
-# base urls containing the list
-url = "http://rx.linkfanel.net/"
-# url = "https://rx.skywavelinux.com/"
+# base urls where the list can be downloaded
+# url = "http://rx.linkfanel.net/"
+url = "https://rx.skywavelinux.com/"
 
 ###############################################################################
 #       Edit the variables above; avoid editing the code below
