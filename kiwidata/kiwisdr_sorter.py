@@ -27,24 +27,17 @@ default_freq = "10000.00"
 listcount = 70
 min_snr = 19
 mykeys = ['url', 'loc']
-sdrlist = []
-filtered_dict = list(filter(lambda site: int(site["snr"][-2:].replace(',', ''))
+dictlist = list(filter(lambda site: int(site["snr"][-2:].replace(',', ''))
                             > min_snr, dictlist))
 
 # Filter by latitude & longitude -- reserved
 
 # sort the list of dicts by snr and truncate
-filtered_dict.sort(key=lambda item: item.get("snr"), reverse=True)
-filtered_dict = filtered_dict[0:listcount]
+dictlist.sort(key=lambda item: item.get("snr"), reverse=True)
+dictlist = filtered_dict[0:listcount]
 
-# look at filtered_dict
-# pp(filtered_dict)
-for entry in filtered_dict:
-    result = []
-    for item in mykeys:
-        val = entry.get(item)
-        result.append(val)
-    sdrlist.append(result)
+# build an SDR list of locations and urls
+sdrlist = [[entry.get(item) for item in mykeys] for entry in dictlist]
 
 # build the SuperSDR database
 payload_3 = "# KiwiSDR bookmark format is...\n# server port frequency description\n"
