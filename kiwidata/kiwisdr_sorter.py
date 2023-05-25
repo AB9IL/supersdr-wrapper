@@ -34,7 +34,7 @@ dictlist = list(filter(lambda site: int(site["snr"][-2:].replace(',', ''))
 
 # sort the list of dicts by snr and truncate
 dictlist.sort(key=lambda item: item.get("snr"), reverse=True)
-dictlist = filtered_dict[0:listcount]
+dictlist = dictlist[0:listcount]
 
 # build an SDR list of locations and urls
 sdrlist = [[entry.get(item) for item in mykeys] for entry in dictlist]
@@ -42,10 +42,8 @@ sdrlist = [[entry.get(item) for item in mykeys] for entry in dictlist]
 # build the SuperSDR database
 payload_3 = "# KiwiSDR bookmark format is...\n# server port frequency description\n"
 for element in sdrlist:
-    output = "\"" + element[1] + "\" " + element[0] + " " + default_freq + "\n"
-    payload_3 = payload_3 + output
-    payload_3 = payload_3.replace("http://", "")
-    payload_3 = payload_3.replace(":", " ")
+    output = f'"{element[1]}" {element[0]} {default_freq}\n'
+    payload_3 += output.replace("http://", "").replace(":", " ")
 
 # Opening a text file in write
 # mode using the open() function
