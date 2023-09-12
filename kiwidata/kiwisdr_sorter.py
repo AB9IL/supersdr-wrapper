@@ -29,6 +29,9 @@ min_snr = 19
 mykeys = ['url', 'loc']
 dictlist = list(filter(lambda site: int(site["snr"][-2:].replace(',', ''))
                             > min_snr, dictlist))
+# exclude sites with no available channels
+dictlist = list(filter(lambda site: float(site["users"])
+                            < float(site["users_max"]), dictlist))
 
 # Filter by latitude & longitude -- reserved
 
