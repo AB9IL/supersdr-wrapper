@@ -7,7 +7,7 @@
 # (at your option) any later version. There is NO warranty; not even for
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# This updater is for systems WITHOUT Dyatlov Mapmaker running. If you
+# This updater is for systems WITH Dyatlov Mapmaker running. If you
 # have Dyatlov Mapmaker creating your KiwiSDR maps, set the variable
 # "current_list" to that file in the mapmaker's directory.
 
@@ -21,23 +21,23 @@ current_list = "kiwisdr_com.js"
 # filename of the unsorted list
 stripped_list = "kiwisdr_stripped.py"
 # filename of the sorter script
-sorter_script = "kiwisdr_sorter.py"
+sorter_scripts = {"kiwisdr_sorter.py", "sdr-stream-bookmarks.py"}
 
 # These paths may be the same or different, depending
 # on where you set up your SuperSDR and other users
 # of the data.
 
 # path to the kiwidata directory
-kiwidata_dir = "/home/user/kiwidata/"
+kiwidata_dir = "/usr/local/src/kiwidata/"
 
 # paths to the lists and sorterscript
-curent_path = "/home/user/kiwidata/" + current_list
-stripped_path = "/home/user/kiwidata/" + stripped_list
-sorter_path = "/home/user/kiwidata/" + sorter_script
-
+curent_path = "/usr/local/src/dyatlov/" + current_list
+stripped_path = "/usr/local/src/kiwidata/" + stripped_list
+#sorter_path = "/usr/local/src/kiwidata/" + sorter_script
+#sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
 # base urls where the list can be downloaded
-# url = "http://rx.linkfanel.net/"
-url = "https://rx.skywavelinux.com/"
+url = "http://rx.linkfanel.net/"
+# url = "https://rx.skywavelinux.com/"
 
 ###############################################################################
 #       Edit the variables above; avoid editing the code below
@@ -69,5 +69,6 @@ with open(kiwi_semiproc, 'r') as in_file, \
 # run scripts to use refined sdr data
 #
 # best sdrs according to SNR
-command = "python3 " + sorter_path
-os.system(command)
+for sorter_script in sorter_scripts:
+    command = f"cd {kiwidata_dir}; python3 {sorter_script}"
+    os.system(command)
