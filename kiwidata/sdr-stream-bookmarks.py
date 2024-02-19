@@ -45,7 +45,11 @@ London_UK = ('London (UK)', 49.8, 53.5, -5.4, 3.4, 5000, 10000, 0)
 # France_Belgium
 France_Belgium = ('France & Belgium', 42.0, 52.0, -5.0, 10.0, 5000, 10000, 0)
 # NewSouthWales (AUS)
-NewSouthWales_AUS = ('NewSouthWales (AUS)', -35.5, -32.5, 148.8, 152, 5000, 10000, 0)
+NewSouthWales_AUS = ('NewSouthWales (AUS)', -35.5, -32.5, 148.8, 152, 5000, 10000, 11)
+# SouthAustralia (AUS)
+SouthAustralia_AUS = ('SouthAustralia (AUS)', -35.5, -32.5, 148.8, 152, 5000, 10000, 10)
+# NorthNewZealand (NZ)
+NorthNewZealand_NZ = ('NorthNewZealand (NZ)', -42.8, -34.2, 172.6, 178.7, 5000, 10000, 12)
 # South East Asia
 South_East_Asia = ('South East Asia', -11.0, 18.7, 92.0, 127.0, 5000, 10000, 7)
 # Midwest (US)
@@ -73,9 +77,10 @@ HFGCS_NW = ('HFGCS Northwest', 38.7, 51.7, -126.0, -103.5, 5000, 10000, -7)
 
 regions = (Newfoundland, Montreal, Ottawa, Oshawa, Winnipeg, Watrous, Edmonton,
            Vancouver, New_York, Wisconsin, Chicago, Shannon, Dublin, Denmark_Area,
-           London_UK, France_Belgium, NewSouthWales_AUS, South_East_Asia, Midwest_US,
-           Pennsylvania, Arkansas, Utah_Arizona, San_Francisco, Southeast_US,
-           NAT_West_area, WATRS_area, CEPAC_area, HFGCS_NE, HFGCS_NW)
+           London_UK, France_Belgium, NewSouthWales_AUS, SouthAustralia_AUS,
+           NorthNewZealand_NZ, South_East_Asia, Midwest_US, Pennsylvania, Arkansas,
+           Utah_Arizona, San_Francisco, Southeast_US, NAT_West_area, WATRS_area,
+           CEPAC_area, HFGCS_NE, HFGCS_NW)
 
 def make_link(dictlist, area):
     lat_range = (area[1], area[2])
