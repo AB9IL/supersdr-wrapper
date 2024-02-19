@@ -31,8 +31,8 @@ sorter_scripts = {"kiwisdr_sorter.py", "sdr-stream-bookmarks.py"}
 kiwidata_dir = "/usr/local/src/kiwidata/"
 
 # paths to the lists and sorterscript
-curent_path = "/usr/local/src/dyatlov/" + current_list
-stripped_path = "/usr/local/src/kiwidata/" + stripped_list
+curent_path = f"/usr/local/src/dyatlov/{current_list}"
+stripped_path = f"/usr/local/src/kiwidata/{stripped_list}"
 #sorter_path = "/usr/local/src/kiwidata/" + sorter_script
 #sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
 # base urls where the list can be downloaded
@@ -56,7 +56,7 @@ kiwi_semiproc = curent_path
 
 if time_now > max_age:
     print("Downloading a fresh list of KiwiSDRs")
-    with requests.get(url + current_list, stream=True) as list_file, \
+    with requests.get(f"{url}{current_list}", stream=True) as list_file, \
             open(kiwi_semiproc, 'w') as out_file:
         out_file.write(list_file.text)
 
@@ -70,5 +70,5 @@ with open(kiwi_semiproc, 'r') as in_file, \
 #
 # best sdrs according to SNR
 for sorter_script in sorter_scripts:
-    command = f"cd {kiwidata_dir}; python3 {sorter_script}"
+    command = f"cd {kiwidata_dir}; python3 ./{sorter_script}"
     os.system(command)
