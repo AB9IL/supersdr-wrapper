@@ -175,12 +175,18 @@ case "$1" in
         # read the bookmarks
         readarray SERVERS < $SERVER_LIST
 
+        # Create an entry to kill SuperSDR 
+        SERVERS+=("Stop SuperSDR")
+
         # open a menu
         [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
         [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
 
         # Select the desired server
         CHOICE=$(echo "${SERVERS[@]}" | sed '/^$/d;/#.*/d' | awk '{printf $0"\n"}' | $COMMAND )
+
+        # Exit if choice to stop SuperSDR 
+        [[ "$CHOICE" == " Stop SuperSDR" ]] && echo "Exiting..." && kill_radio
 
         # Exit if nothing selected
         [[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0

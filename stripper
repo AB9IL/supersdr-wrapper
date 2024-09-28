@@ -16,6 +16,9 @@ import time
 
 import requests
 
+# filename of the updater script
+updater = "kiwisdr_com-update"
+
 # filename of the KiwiSDR list created by Dyatlov MapMaker
 current_list = "kiwisdr_com.js"
 # filename of the unsorted list
@@ -33,10 +36,10 @@ kiwidata_dir = "/usr/local/src/kiwidata/"
 # paths to the lists and sorterscript
 curent_path = f"/usr/local/src/dyatlov/{current_list}"
 stripped_path = f"/usr/local/src/kiwidata/{stripped_list}"
-#sorter_path = "/usr/local/src/kiwidata/" + sorter_script
-#sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
+# sorter_path = "/usr/local/src/kiwidata/" + sorter_script
+# sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
 # base urls where the list can be downloaded
-url = "http://rx.linkfanel.net/"
+# url = "http://rx.linkfanel.net/"
 # url = "https://rx.skywavelinux.com/"
 
 ###############################################################################
@@ -56,14 +59,15 @@ kiwi_semiproc = curent_path
 
 if time_now > max_age:
     print("Downloading a fresh list of KiwiSDRs")
-    with requests.get(f"{url}{current_list}", stream=True) as list_file, \
-            open(kiwi_semiproc, 'w') as out_file:
-        out_file.write(list_file.text)
+    # with requests.get(f"{url}{current_list}", stream=True) as list_file, \
+    #   open(kiwi_semiproc, 'w') as out_file:
+    #    out_file.write(list_file.text)
+    command = f"/usr/local/src/dyatlov/{updater}"
+    os.system(command)
 
-with open(kiwi_semiproc, 'r') as in_file, \
-        open(stripped_path, 'w') as out_file:
+with open(kiwi_semiproc, "r") as in_file, open(stripped_path, "w") as out_file:
     lines = in_file.readlines()
-    out_file.write('dictlist = [\n')
+    out_file.write("dictlist = [\n")
     out_file.writelines(lines[7:-1])
 
 # run scripts to use refined sdr data
