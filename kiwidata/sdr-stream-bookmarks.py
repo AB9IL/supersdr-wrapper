@@ -29,7 +29,7 @@ Edmonton = ("Edmonton", 51.0, 56.0, -117.0, -110.0, 5000, 10000, -7)
 # Vancouver
 Vancouver = ("Vancouver", 48.0, 50.2, -126.0, -119.0, 5000, 10000, -8)
 # New York
-New_York = ("New York", 39.7, 42.0, -76.4, -72.0, 5000, 10000, -5)
+New_York = ("NewYork", 39.7, 42.0, -76.4, -72.0, 5000, 10000, -5)
 # Wisconsin
 Wisconsin = ("Wisconsin", 41.0, 47.3, -93.8, -86.6, 5000, 10000, -6)
 # Chicago
@@ -39,18 +39,22 @@ Shannon = ("Shannon", 51.2, 54.5, -10.7, -7.4, 5000, 10000, 0)
 # Dublin (IE)
 Dublin = ("Dublin", 52.3, 55.0, -9.0, -3.0, 5000, 10000, 0)
 # Denmark Area
-Denmark_Area = ("Denmark Area", 52.5, 60.5, -3.0, 20.0, 5000, 10000, 1)
+Denmark_Area = ("DenmarkArea", 52.5, 60.5, -3.0, 20.0, 5000, 10000, 1)
 # London (UK)
-London_UK = ("London (UK)", 49.8, 53.5, -5.4, 3.4, 5000, 10000, 0)
+London_UK = ("London", 49.8, 53.5, -5.4, 3.4, 5000, 10000, 0)
 # France_Belgium
-France_Belgium = ("France & Belgium", 42.0, 52.0, -5.0, 10.0, 5000, 10000, 0)
+France_Belgium = ("France_Belgium", 42.0, 52.0, -5.0, 10.0, 5000, 10000, 1)
+# Germany Switzerland
+Germany_Switzerland = ("Germany_Switzerland", 45.7, 54.9, 6.1, 15.2, 5000, 10000, 1)
+# Cyprus
+cyprus_area = ("Cyprus", 34.4, 35.9, 31.9, 34.8, 5000, 10000, 0)
 # NewSouthWales (AUS)
-NewSouthWales_AUS = ("NewSouthWales (AUS)", -35.5, -32.5, 148.8, 152, 5000, 10000, 11)
+NewSouthWales_AUS = ("NewSouthWales", -35.5, -32.5, 148.8, 152, 5000, 10000, 11)
 # SouthAustralia (AUS)
-SouthAustralia_AUS = ("SouthAustralia (AUS)", -35.5, -32.5, 148.8, 152, 5000, 10000, 10)
+SouthAustralia_AUS = ("SouthAustralia", -35.5, -32.5, 148.8, 152, 5000, 10000, 10)
 # NorthNewZealand (NZ)
 NorthNewZealand_NZ = (
-    "NorthNewZealand (NZ)",
+    "NorthNewZealand",
     -42.8,
     -34.2,
     172.6,
@@ -60,9 +64,9 @@ NorthNewZealand_NZ = (
     12,
 )
 # South East Asia
-South_East_Asia = ("South East Asia", -11.0, 18.7, 92.0, 127.0, 5000, 10000, 7)
+South_East_Asia = ("South_East_Asia", -11.0, 18.7, 92.0, 127.0, 5000, 10000, 7)
 # Midwest (US)
-Midwest_US = ("Midwest (US)", 37.0, 43.5, -91.5, -80.0, 5000, 10000, -5)
+Midwest_US = ("Midwest", 37.0, 43.5, -91.5, -80.0, 5000, 10000, -5)
 # Pennsylvania
 Pennsylvania = ("Pennsylvania", 39.7, 42.0, -84.5, -74.5, 5000, 10000, -4)
 # Arkansas
@@ -74,15 +78,19 @@ San_Francisco = ("San Francisco", 37.0, 39.0, -123.0, -120.0, 5000, 10000, -7)
 # Southeast (US)
 Southeast_US = ("Southeast_US", 24.0, 36.5, -91.5, -74.5, 5000, 10000, -4)
 # NAT Tracks West
-NAT_West_area = ("NAT West", 40.2, 47.2, -76.9, -52.0, 5000, 10000, -4)
+NAT_West_area = ("NAT_West", 40.2, 47.2, -76.9, -52.0, 5000, 10000, -4)
 # WATRS
 WATRS_area = ("WATRS", 17.0, 42.0, -84.0, -62.0, 5000, 10000, -4)
 # CEPAC
 CEPAC_area = ("CEPAC", 16.0, 52.0, -163.0, -116.0, 5000, 10000, -9)
 # HFGCS Northeast
-HFGCS_NE = ("HFGCS Northeast", 40.9, 46.0, -75.0, -69.0, 5000, 10000, -4)
+HFGCS_NE = ("HFGCS_Northeast", 40.9, 46.0, -75.0, -69.0, 5000, 10000, -4)
 # HFGCS Northwest
-HFGCS_NW = ("HFGCS Northwest", 38.7, 51.7, -126.0, -103.5, 5000, 10000, -7)
+HFGCS_NW = ("HFGCS_Northwest", 38.7, 51.7, -126.0, -103.5, 5000, 10000, -7)
+# Bangkok (TH)
+bangkok_area = ("Bangkok", 12.4, 14.7, 99.4, 101.9, 5000, 10000, -7)
+# Tokyo (JP)
+tokyo_area = ("Tokyo", 34.8, 36.9, 138.7, 141.0, 5000, 10000, -7)
 
 regions = (
     Newfoundland,
@@ -101,6 +109,7 @@ regions = (
     Denmark_Area,
     London_UK,
     France_Belgium,
+    Germany_Switzerland,
     NewSouthWales_AUS,
     SouthAustralia_AUS,
     NorthNewZealand_NZ,
@@ -116,6 +125,9 @@ regions = (
     CEPAC_area,
     HFGCS_NE,
     HFGCS_NW,
+    bangkok_area,
+    tokyo_area,
+    cyprus_area,
 )
 
 
@@ -125,7 +137,7 @@ def make_link(dictlist, area):
     # first freq is for daytime, second freq for night
     monitor_freqs = (area[5], area[6])
     listcount = 10
-    min_snr = 8
+    min_snr = 15
     local_hour = area[7] + datetime.datetime.now(datetime.UTC).hour
     # select day or night frequency
     local_freq = area[6]
