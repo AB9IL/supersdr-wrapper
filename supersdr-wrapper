@@ -53,14 +53,15 @@
 browser='x-www-browser --new-window'
 
 # use SuperSDR if available
+superpath="../supersdr"
 use_supersdr=true
 
 # specify the bookmarks file for streaming
-BOOKMARKS_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks"
-TEMPLATE_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks-template"
+BOOKMARKS_FILE="kiwidata/sdr-stream-bookmarks"
+TEMPLATE_FILE="kiwidata/sdr-stream-bookmarks-template"
 
 # specify the bookmarks file for the server selector
-SERVER_LIST="/usr/local/src/kiwidata/kiwiservers"
+SERVER_LIST="kiwidata/kiwiservers"
 
 ###############################################################################
 # CAUTION: DRAGONS LIVE BELOW THIS LINE
@@ -97,7 +98,7 @@ case "$server_type" in
         # stream from KiwiSDRs with SuperSDR
         domain="$(echo $url | awk -F: '{print substr($2,3)}')"
         port="$(echo $url | awk -F: '{print substr($3,1,4)}')"
-        cd /usr/local/src/supersdr || exit
+        [[ "$use_supersdr" ]] && cd "$superpath"/supersdr || exit
         [[ "$use_supersdr" ]] && ./supersdr.py --kiwiserver ${domain} --kiwiport ${port} -f ${freq}
         # stream from KiwiSDRs with web browser
         [[ "$use_supersdr" ]] || ${browser} ${url}"?f="${freq}"/"${bandpass}${mode}${zoom}"&1hz"
@@ -117,7 +118,7 @@ for target in field; do
 done
 
 # open the client and connect to the SDR server
-(cd /usr/local/src/supersdr || exit; ./supersdr.py --kiwiserver "$domain" --kiwiport "$port" -f "$frequency")
+([[ "$use_supersdr" ]] && cd "$superpath"/supersdr || exit; ./supersdr.py --kiwiserver "$domain" --kiwiport "$port" -f "$frequency")
 
 kill_radio
 }
@@ -175,7 +176,7 @@ case "$1" in
         # read the bookmarks
         readarray SERVERS < $SERVER_LIST
 
-        # Create an entry to kill SuperSDR 
+        # Create an entry to kill SuperSDR
         SERVERS+=("Stop SuperSDR")
 
         # open a menu
@@ -185,7 +186,7 @@ case "$1" in
         # Select the desired server
         CHOICE=$(echo "${SERVERS[@]}" | sed '/^$/d;/#.*/d' | awk '{printf $0"\n"}' | $COMMAND )
 
-        # Exit if choice to stop SuperSDR 
+        # Exit if choice to stop SuperSDR
         [[ "$CHOICE" == " Stop SuperSDR" ]] && echo "Exiting..." && kill_radio
 
         # Exit if nothing selected
@@ -215,4 +216,3 @@ case "$1" in
         exit 3
         ;;
 esac
-
