@@ -35,6 +35,7 @@ Python3
 Bash
 Rofi
 fzf
+dyatlov map maker
 ```
 
 SuperSDR Wrapper requires a minimum of Python3 and Rofi. Selecting KiwiSDR servers on the command line requires fzf. It is suggested to also install the Dyatlov SDR Map maker to plot servers on a map in your web browser. The map maker also keeps an updated list of KiwiSDRs, sourced from their primary server database.
