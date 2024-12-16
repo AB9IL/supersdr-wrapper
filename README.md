@@ -8,7 +8,7 @@ SuperSDR wrapper saves time. Do you really want to bumble around with a long str
 
 #### Usage
 
-A mode argument must be given: --bookmarks, --servers, or --kill. With no other arguments, the list will be produced in the terminal by fzf:
+A mode argument must be given: --bookmarks, --servers, --map, or --kill. With no other arguments, the list will be produced in the terminal by fzf:
 ```bash
 $  supersdr-wrapper --bookmarks
 ```
@@ -16,6 +16,11 @@ $  supersdr-wrapper --bookmarks
 To pull up a list of servers in Rofi, use the _--gui_ argument:
 ```bash
 $  supersdr-wrapper --servers --gui
+```
+
+To see a map of currently online SDRs, use the _--map_ argument:
+```bash
+$  supersdr-wrapper --map
 ```
 
 If SuperSDR freezes or locks up, eliminate the processes with the _--kill_ argument:
