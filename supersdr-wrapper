@@ -40,6 +40,11 @@
 # "Western Atlantic Routes" "http://raleigh.twrmon.net:8073/ 6577.00 usb kiwi""http://bottlebranch.proxy.kiwisdr.com:8073/ 6577.00 usb kiwi"
 # "BBC Radio 4 Longwave(WebSDR)" "http://websdr.ewi.utwente.nl:8901/ 198.00 am web"
 #
+#MAP mode ####################################################################
+# Uses the Dyatlov Map Maker.
+# If necessary, the server data is updated, then an SDR map is 
+# opened inthe web browser.
+#
 # SERVER SELECTOR mode #######################################################
 # Read from a list of KiwiSDR sites and open a stream in SuperSDR.
 #
@@ -49,19 +54,30 @@
 # "Raleigh area SDR on 300 foot longwire" raleigh.twrmon.net 8073 10000
 #
 # Specify the web browser command
-# browser='vivaldi --new-window'
-browser='x-www-browser --new-window'
+# generic browser on Xserver:
+#     browser='x-www-browser --new-tab'
+# vivaldi:
+#     browser='vivaldi --new-tab'
+# brave flatpak:
+#     browser='flatpak run com.brave.Browser'
+browser='x-www-browser --new-tab'
 
 # use SuperSDR if available
-superpath="../supersdr"
+superpath="/usr/local/src/supersdr"
 use_supersdr=true
 
 # specify the bookmarks file for streaming
-BOOKMARKS_FILE="kiwidata/sdr-stream-bookmarks"
-TEMPLATE_FILE="kiwidata/sdr-stream-bookmarks-template"
+BOOKMARKS_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks"
+TEMPLATE_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks-template"
 
 # specify the bookmarks file for the server selector
-SERVER_LIST="kiwidata/kiwiservers"
+SERVER_LIST="/usr/local/src/kiwidata/kiwiservers"
+
+# path to Dyatlov SDR map directory:
+MAPDIR="/usr/local/src/dyatlov"
+
+# KiwiSDR server data
+receiver_data="$MAPDIR/kiwisdr_com.js"
 
 ###############################################################################
 # CAUTION: DRAGONS LIVE BELOW THIS LINE
@@ -98,7 +114,7 @@ case "$server_type" in
         # stream from KiwiSDRs with SuperSDR
         domain="$(echo $url | awk -F: '{print substr($2,3)}')"
         port="$(echo $url | awk -F: '{print substr($3,1,4)}')"
-        [[ "$use_supersdr" ]] && cd "$superpath"/supersdr || exit
+        [[ "$use_supersdr" ]] && cd "$superpath" || exit
         [[ "$use_supersdr" ]] && ./supersdr.py --kiwiserver ${domain} --kiwiport ${port} -f ${freq}
         # stream from KiwiSDRs with web browser
         [[ "$use_supersdr" ]] || ${browser} ${url}"?f="${freq}"/"${bandpass}${mode}${zoom}"&1hz"
@@ -118,9 +134,27 @@ for target in field; do
 done
 
 # open the client and connect to the SDR server
-([[ "$use_supersdr" ]] && cd "$superpath"/supersdr || exit; ./supersdr.py --kiwiserver "$domain" --kiwiport "$port" -f "$frequency")
+([[ "$use_supersdr" ]] && cd "$superpath" || exit; ./supersdr.py --kiwiserver "$domain" --kiwiport "$port" -f "$frequency")
 
 kill_radio
+}
+
+sdrmap(){
+    new_cronjob () {
+        # automatically update the KiwiSDR database
+        sudo echo -e '#!/bin/bash\n11,41 * * * * user /usr/local/src/dyatlov/kiwisdr_com-update' | sudo tee /etc/cron.d/sdrmap
+        sudo chmod +x /etc/cron.d/sdrmap
+        sudo chmod 644 /etc/cron.d/sdrmap
+    }
+
+# updates server data if necessary
+ [[ $(date +%s -r "${receiver_data}") -lt $(date +%s --date="45 min ago") ]] && \
+     echo "Updating server data..." && stripper
+
+# check for and set new cronjob as necessary
+# [[ -f "/etc/cron.d/sdrmap"  ]] || new_cronjob
+
+${browser} "file://${MAPDIR}/index.html"
 }
 
 kill_radio(){
@@ -195,6 +229,9 @@ case "$1" in
         field=$(echo $CHOICE | awk -F\" '{printf $3"\n"}')
         [[ -z "$field"  ]] || start_server_selector &
         ;;
+    --map)
+        sdrmap
+        ;;
     --kill)
         kill_radio
         ;;
@@ -205,6 +242,7 @@ case "$1" in
     Commands:
     --bookmarks   Select a station from the bookmarks (server is auto selected)
     --servers     Select from currently running SDR servers
+    --map         Open the global SDR map.
     --kill        Terminate instances of SuperSDR
 
     Interfaces:
