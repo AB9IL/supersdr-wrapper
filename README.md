@@ -65,6 +65,16 @@ SuperSDR Wrapper requires a minimum of Python3, Yad, and Rofi. Selecting SDR ser
 
 An updated list of Web-888 servers is available from this repository; automatic updating is in the works, to be published here in the future.
 
+#### Keybinds
+
+SuperSDR Wrapper may be launched from your keyboard if you set up proper bindings. Here is example code to launch it using the Simple X Hotkey Daemon (SXHKD):
+
+```
+# Launch SuperSDR Wrapper with Super + s and ctrl / shift / alt keys
+super + s + {shift,ctrl,alt}
+    {radiostreamer gui,supersdr-wrapper --bookmarks --gui,supersdr-wrapper --servers --gui,supersdr-wrapper --airband --gui}
+```
+
 #### IMPORTANT
 
 Scripts _supersdr-wrapper_ and _stripper_ should be placed in your _path_ and made _executable_.
