@@ -4,9 +4,11 @@ Easy fuzzyfinder and list sorter to use with SuperSDR
 
 ## Why a wrapper for SuperSDR?
 
-SuperSDR is a lightweight and functional client for using the global network of KiwiSDR receivers. There are about 900 radios available for anyone to use, with with various locations and reception quality. SuperSDR Wrapper works in two modes: selecting receivers (servers) and tuning specific stations (bookmarks). As a server selector, the script can read a list of KiwiSDRs, sort them according to sensitivity, and present the user with a fuzzy-searchable menu of the ones with top rankings. The chosen KiwiSDR opens for streaming in SuperSDR. As a bookmark picker, the script opens a KiwiSDR server geographically proximate to a desired station or frequency of interest.
+SuperSDR is a lightweight and functional client for using the global network of KiwiSDR and Web-888 receivers. There are about 900 radios available for anyone to use, with with various locations and reception quality. SuperSDR Wrapper works in three modes: selecting receivers (servers), tuning specific stations (bookmarks), and starting the SDR Map (if installed). As a server selector, the script can read a list of SDRs, sort them according to sensitivity, and present the user with a fuzzy-searchable menu of the ones with top rankings. The chosen KiwiSDR or Web-888 SDR opens for streaming in SuperSDR. As a bookmark picker, the script opens an SDR server geographically proximate to a desired station or frequency of interest.
 
 SuperSDR wrapper saves time. Do you really want to bumble around with a long string of command line arguments when you could already be listening to the BBC or Brother Stair?? With this wrapper, you can have a receiver streaming signals to you in seconds.
+
+SuperSDR Wrapper is now able to sort receivers by frequency bands in addition to SNR score, sothere is now a VHF-Airband list (also usable for VHF weather satellite downlinks and ISS communications).
 
 #### Usage
 
