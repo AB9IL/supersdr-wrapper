@@ -42,7 +42,7 @@
 #
 #MAP mode ####################################################################
 # Uses the Dyatlov Map Maker.
-# If necessary, the server data is updated, then an SDR map is 
+# If necessary, the server data is updated, then an SDR map is
 # opened inthe web browser.
 #
 # SERVER SELECTOR mode #######################################################
@@ -69,6 +69,10 @@ use_supersdr=true
 # specify the bookmarks file for streaming
 BOOKMARKS_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks"
 TEMPLATE_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks-template"
+
+# specify the airband bookmark file and template for streaming
+AIRBAND_FILE="/usr/local/src/kiwidata/airband-bookmarks"
+AIRBAND_TEMPLATE_FILE="/usr/local/src/kiwidata/airband-template"
 
 # specify the bookmarks file for the server selector
 SERVER_LIST="/usr/local/src/kiwidata/kiwiservers"
@@ -114,6 +118,13 @@ case "$server_type" in
         # stream from KiwiSDRs with SuperSDR
         domain="$(echo $url | awk -F: '{print substr($2,3)}')"
         port="$(echo $url | awk -F: '{print substr($3,1,4)}')"
+        # send error notification and quit if domain is "example.com"
+        [[ "${domain}" == "example.com"  ]] && \
+            WINDOW=$(yad --timeout=10 --height=30 --width=400 \
+            --no-buttons --text-align=center --fixed \
+            --text="Exiting! No suitable server found." &)
+        [[ "${domain}" == "example.com"  ]] && exit
+        # Stream from SuperSDR
         [[ "$use_supersdr" ]] && cd "$superpath" || exit
         [[ "$use_supersdr" ]] && ./supersdr.py --kiwiserver ${domain} --kiwiport ${port} -f ${freq}
         # stream from KiwiSDRs with web browser
@@ -174,6 +185,38 @@ case "$1" in
         # read the bookmarks
         readarray CHANNELS < $BOOKMARKS_FILE
 
+        # Add an item for editing the list or stopping SuperSDR
+        CHANNELS+=('"Edit the Template"')
+        CHANNELS+=($'\n')
+        CHANNELS+=('"Stop SuperSDR"')
+
+        # open a menu
+        [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
+        [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
+        [[ "$interface" == "gui" ]] && COMMAND2="x-terminal-emulator -e vim ${TEMPLATE_FILE}"
+        [[ "$interface" == "gui" ]] || COMMAND2="vim ${TEMPLATE_FILE}"
+echo "${CHANNELS[@]}"
+        # Select the desired channel
+        CHOICE=$(echo "${CHANNELS[@]}" | sed '/^$/d;/#.*/d' | awk -F\" '{printf $2"\n"}' | $COMMAND )
+
+        [[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0
+        [[ "$CHOICE" == "Edit the Template" ]] && $COMMAND2 && exit 0
+        [[ "$CHOICE" == "Stop SuperSDR" ]] && kill_radio
+
+        # Get site urls, freq, and mode for the selected channel
+        CHECK=$(echo "${CHANNELS[@]}" | grep "$CHOICE")
+
+        # Open as many as two SDR instances
+        field=$(echo $CHECK | awk -F\" '{printf $4"\n"}')
+        [[ -z "$field"  ]] || start_bookmarks_streamer &
+
+        field=$(echo $CHECK | awk -F\" '{printf $6"\n"}')
+        [[ -z "$field"  ]] || start_bookmarks_streamer &
+        ;;
+    --airband)
+        # read the bookmarks
+        readarray CHANNELS < $AIRBAND_FILE
+
         # Add an item for editing the list
         CHANNELS+=("Edit the Template")
         # Add an item for stopping SuperSDR
@@ -182,8 +225,8 @@ case "$1" in
         # open a menu
         [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
         [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
-        [[ "$interface" == "gui" ]] && COMMAND2="x-terminal-emulator -e vim ${TEMPLATE_FILE}"
-        [[ "$interface" == "gui" ]] || COMMAND2="vim ${TEMPLATE_FILE}"
+        [[ "$interface" == "gui" ]] && COMMAND2="x-terminal-emulator -e vim ${AIRBAND_TEMPLATE_FILE}"
+        [[ "$interface" == "gui" ]] || COMMAND2="vim ${AIRBAND_TEMPLATE_FILE}"
 
         # Select the desired channel
         CHOICE=$(echo "${CHANNELS[@]}" | sed '/^$/d;/#.*/d' | awk -F\" '{printf $2"\n"}' | $COMMAND )
@@ -195,6 +238,7 @@ case "$1" in
         # Get site urls, freq, and mode for the selected channel
         CHECK=$(echo "${CHANNELS[@]}" | grep "$CHOICE")
 
+        # Open as many as two SDR instances
         field=$(echo $CHECK | awk -F\" '{printf $4"\n"}')
         [[ -z "$field"  ]] || start_bookmarks_streamer &
 
@@ -241,6 +285,7 @@ case "$1" in
 
     Commands:
     --bookmarks   Select a station from the bookmarks (server is auto selected)
+    --airband     Select a VHF Airband bookmark (server from a curated list)
     --servers     Select from currently running SDR servers
     --map         Open the global SDR map.
     --kill        Terminate instances of SuperSDR
@@ -254,3 +299,4 @@ case "$1" in
         exit 3
         ;;
 esac
+

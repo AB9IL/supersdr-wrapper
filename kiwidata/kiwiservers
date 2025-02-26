@@ -1,102 +1,152 @@
 # KiwiSDR bookmark format is...
 # server port frequency description
-"Kuninkaankyl√§, Loviisa, Finland üá´üáÆ" kb1.psokiwi.net 8073 10000.00
-"Khabarovsk, Russia" khv.swl.su 80 10000.00
-"Lucerne Switzerland" hb9bxewebsdr.ddns.net 8073 10000.00
-"Tampere, Finland" tredxk.no-ip.org 8073 10000.00
-"@Wildeck - Waldhessen, Germany" waldhessenfunk.home-webserver.de 8073 10000.00
-"Szekesfehervar/Maroshegy, Hungary" fsdr.duckdns.org 80 10000.00
-"Chichester UK" g8ure.ddns.net 8074 10000.00
-"DK1MAX, Feilenmoos, Bavaria" dk1max.sytes.net 8073 10000.00
-"24510 TREMOLAT, FRANCE" sdr.autreradioautreculture.com 8073 10000.00
-"Bor√•s" sk6ag2.ddns.net 8072 10000.00
-"Kampereiland, Netherlands" 217.26.107.148 8073 10000.00
-"Malin, County Donegal, Ireland" malinheadkiwi.hopto.org 8073 10000.00
-"Lower Austria / Austria" oe3akb.ddns.net 8073 10000.00
-"Arvika,Sweden" sa4bna.hopto.org 8073 10000.00
-"Bad Bentheim , Germany" df0twn.dnsuser.de 8073 10000.00
-"French Alps" linkz.ddns.net 8074 10000.00
-"Near Tarlee, South Australia" kiwisdr.areg.org.au 8074 10000.00
-"South East Germany (Bavaria) / Central Europe" sdr-bayern.spdns.de 8073 10000.00
-"Skanderborg, Denmark" 85.191.35.22 8073 10000.00
-"Lublin, Poland" kiwisdrlublin.ddns.net 8073 10000.00
-"DL3ZID Schwerin" pdbh2d76wb7bt5z2.myfritz.net 8073 10000.00
-"Weston-super-Mare, United Kingdom" websdr.uk 8075 10000.00
-"Hablingbo, Gotland Island, SWEDEN" 158.174.17.55 8073 10000.00
-"Marianske Lazne, Czech" 109.164.114.15 8073 10000.00
-"French Alps" linkz.ddns.net 8073 10000.00
-"Weston-super-Mare, United Kingdom" websdr.uk 8078 10000.00
-"Mala, Northern Sweden." aspliden.kostet.se 8074 10000.00
-"Vallen, Ludvika, Sweden" sm4fge.ddns.net 8073 10000.00
-"Weston-super-Mare, United Kingdom" websdr.uk 8079 10000.00
-"Powys, Wales" sdrmark.proxy.kiwisdr.com 8073 10000.00
-"Ahornalp LU, 1'140 asl, Switzerland" ahorn.proxy.kiwisdr.com 8073 10000.00
-"Groningen, Netherlands" mwiek.nl 8073 10000.00
-"Castlebar, Co Mayo, Ireland" kiwi.minish.org 8073 10000.00
-"Spain" ei2hh.proxy.kiwisdr.com 8073 10000.00
-"Brettnach, France" f4kiy.ddns.net 8073 10000.00
-"Ironstone Range, South Australia" sdr.ironstonerange.com 8075 10000.00
-"Near Bristol, UK" g3sdh.com 8054 10000.00
-"Bonn, Germany" dl0dtm.ddns.net 8073 10000.00
-"Osaka, Japan" r8600-bcl.dyndns-remote.com 6530 10000.00
-"Dimapur" 103.232.186.40 8073 10000.00
-"Finland" rha2sdr.ddns.net 8075 10000.00
-"Silesia, Poland" okno.ddns.net 8073 10000.00
-"Elverum, Norway" julussdalen1.proxy.kiwisdr.com 8073 10000.00
-"Elverum, Norway" julussdalen2.proxy.kiwisdr.com 8073 10000.00
-"Weston-super-Mare, United Kingdom" websdr.uk 8077 10000.00
-"Near Bristol, UK" g3sdh.com 8053 10000.00
-"Near Tarlee, South Australia" kiwisdr.areg.org.au 8073 10000.00
-"Mala, Northern Sweden." aspliden.kostet.se 8073 10000.00
-"Werneuchen, Brandenburg, Germany" sdr.dl7vdx.com 80 10000.00
-"Hilgenriedersiel, Germany" sielsdr.ddns.net 8073 10000.00
-"B√ºlzig JO61jv" hnswerkstatt.dyndns.org 8073 10000.00
-"Ironstone Range, South Australia" sdr.ironstonerange.com 8074 10000.00
-"Paderborn, Germany" nndatentechnik.dynv6.net 8073 10000.00
-"Oita,Japan" kiwi.web-sdr.net 80 10000.00
-"Filderstadt/Germany" dl2sba.ddns.net 8073 10000.00
-"Hunter Valley NSW Australia" vk2ggc2.ddns.net 8074 10000.00
-"Svenljunga, Sweden" sk6ag1.ddns.net 8071 10000.00
-"Kokkola, Finland" kiwisdr.oh6ai.fi 8073 10000.00
-"Half Moon Bay, California" 69.27.184.58 8073 10000.00
-"Cavriglia (Arezzo), Italy" 79.2.157.173 8073 10000.00
-"REUTE/AR" 62.2.184.6 8073 10000.00
-"Germany, NRW, Rhede" 91.137.118.149 8073 10000.00
+"Republic, Missouri. USA" n0bqv.proxy.kiwisdr.com 8073 10000.00
+"Weston-super-Mare, United Kingdom" 80m.live 8073 10000.00
+"Weston-super-Mare, United Kingdom" 80m.live 8076 10000.00
+"Weston-super-Mare, United Kingdom" 80m.live 8074 10000.00
+"Weston-super-Mare, United Kingdom" 80m.live 8077 10000.00
+"Weston-super-Mare, United Kingdom" 80m.live 8079 10000.00
+"Weston-super-Mare, United Kingdom" 80m.live 8078 10000.00
+"Wales, UK" 21595.proxy.kiwisdr.com 8073 10000.00
+"W. Montana, USA" 22033.proxy.kiwisdr.com 8073 10000.00
+"Sutton, MA USA" kiwisdr.njctech.com 8073 10000.00
+"Weston-super-Mare, United Kingdom" websdr.uk 8060 10000.00
+"Tambov, Russia" sdr.radiorubka.org 80 10000.00
+"Shrewsbury, Vermont, USA" sdr.k1vl.com 8073 10000.00
+"France (center)" 82.65.21.17 8073 10000.00
+"Westminster, MD, USA" sdr.hfunderground.com 8075 10000.00
+"ARANO (Navarra) Spain" 21959.proxy.kiwisdr.com 8073 10000.00
+"Carlow, Ireland" emeraldsdr1.ddns.net 8074 10000.00
+"Citrus County, FL USA" 21084.proxy.kiwisdr.com 8073 10000.00
+"Citrus County, FL USA" web888.servehttp.com 8074 10000.00
+"Becker, Minnesota, USA" becker.proxy.rx-888.com 8073 10000.00
+"Fuerteventura, Canary Islands" ea8bfk.ddns.net 8073 10000.00
+"Ireland" irelandnorthwest.proxy.kiwisdr.com 8073 10000.00
+"Alberschwende, Austria" kiwi.oe9.oevsv.at 8077 10000.00
+"Milford, PA USA" kiwisdr.k3fef.com 8073 10000.00
+"Westminster, MD, USA" sdr.hfunderground.com 8074 10000.00
+"Natural Bridge, VA" 22338.proxy.kiwisdr.com 8073 10000.00
+"Dauphin, Manitoba, Canada" 21307.proxy.kiwisdr.com 8073 10000.00
+"Guipry-Messac, FRANCE" 21924.proxy.kiwisdr.com 8073 10000.00
+"Alberschwende, Austria" kiwi.oe9.oevsv.at 8073 10000.00
 "South West England, UK" wessex.zapto.org 8073 10000.00
-"Stone, Staffordshire, England" kiwisdr.lamont.me.uk 8073 10000.00
-"Weston-super-Mare, United Kingdom" websdr.uk 8073 10000.00
-"Leiden, The Netherlans" kiwi-sdr1-leiden.impactam.nl 8073 10000.00
-"Zwolle, Netherlands" kiwisdr.tgcfabian.nl 80 10000.00
-"Borgwedel, Germany" do6lsm.ddns.net 8074 10000.00
-"Ironstone Range, South Australia" sdr.ironstonerange.com 8073 10000.00
-"Dae_Gu City, South Korea" korea-sdr.ddns.net 8073 10000.00
-"Trent JO54EF, Deutschland" dl8las.dyndns.org 8073 10000.00
-"Germany" kiwisdr.dynpc.net 8073 10000.00
-"üá¶üáπüá¶üáπüá¶üáπüá¶üáπ URL  rx1.radio101.de üá¶üáπüá¶üáπüá¶üáπüá¶üáπ Kufstein / Niederndorferberg (950m a.s.l.), Austria" 91.113.112.77 8073 10000.00
-"Gr√∂t√∂, Sweden" sk6ag3.ddns.net 8073 10000.00
-"Wangerland, Germany" dl4eeckiwi.proxy.kiwisdr.com 8073 10000.00
-"Haselunne, Germany" hanshomepa0ehg.ddns.net 8073 10000.00
-"Vlotho" dl1yay.ddns.net 8073 10000.00
-"HB9BEI, Switzerland" 213.142.166.76 8073 10000.00
-"Husum-Schob√ºll, Germany" 0kqvydic4s76vnto.myfritz.net 8073 10000.00
-"Kotka, Finland" pso.psokiwi.net 8077 10000.00
-"Dorohoi, Romania" kiwisdr-dorohoi.ddns.net 8073 10000.00
-"Fulda, Germany" ko9xjv5u227qbxwa.myfritz.net 8073 10000.00
-"Trent JO54EF, Deutschland" 109.125.72.104 8073 10000.00
-"Korpilahti, Finland" rha2sdr.ddns.net 8074 10000.00
-"Messkirch, BW" 83.242.48.26 8073 10000.00
-"Meiselding / Austria" carinthia.proxy.kiwisdr.com 8073 10000.00
-"Teralba, New South Wales. AUSTRALIA." vk2atz.proxy.kiwisdr.com 8073 10000.00
-"Massignac, France" f1jeksdr1.ddns.net 8073 10000.00
-"Cha-Am, Thailand" la6lukiwisdrth.ddns.net 8073 10000.00
-"Haparanda, Sweden" sm2byc.ddns.net 8073 10000.00
-"Haparanda, Sweden" 178.174.245.250 8073 10000.00
-"Siknas Sweden" kiwisdr.sk2hg.se 8073 10000.00
-"Pommier de Beaurepaire (38)" f6abj-kiwihf.ddns.net 8074 10000.00
-"Wanganui, New Zealand" sdr.zl2ja.org 8073 10000.00
-"Martinsicuro, Italy" iz6byy.duckdns.org 8073 10000.00
-"It√§ranta, Kotka, Finland üá´üáÆ" pso.p.sdrotg.com 80 10000.00
+"Alberschwende, Austria" 21298.proxy.kiwisdr.com 8073 10000.00
+"Westminster, MD, USA" sdr.hfunderground.com 8073 10000.00
+"Big Bend Florida" 21310.proxy.kiwisdr.com 8073 10000.00
+"Carterville, IL. USA" n9azz.proxy.kiwisdr.com 8073 10000.00
+"Raleigh, NC" raleigh.twrmon.net 8073 10000.00
+"Berthoud, Colorado USA" w0air.ddns.net 8073 10000.00
+"West Mountain, Dutchess County, NY, USA" listener2.proxy.kiwisdr.com 8073 10000.00
+"White House, Tennessee" 22164.proxy.kiwisdr.com 8073 10000.00
+"Weiser, Idaho, USA - 20khz band width" ka7u.no-ip.org 8073 10000.00
+"Amersfoort, The Netherlands" kiwisdr.kixs.org 80 10000.00
+"Presque Isle, WI USA" 21042.proxy.kiwisdr.com 8073 10000.00
+"Ireland west" irelandnorthwest2.proxy.kiwisdr.com 8073 10000.00
+"Carlow, Ireland" emeraldsdr1.ddns.net 8074 10000.00
+"Werneuchen, Brandenburg, Germany" sdr.dl7vdx.com 80 10000.00
+"Victoria, Australia" sdr-amradioantennas.com 8071 10000.00
+"Victoria, Australia" sdr-amradioantennas.com 8072 10000.00
+"Birmingham , AL" n4dkd.asuscomm.com 8901 10000.00
+"Empire, Michigan, USA" 21662.proxy.kiwisdr.com 8073 10000.00
+"Jena, Germany" sdr.dk9jhb.de 8073 10000.00
+"Weston-super-Mare, United Kingdom" 80m.live 8075 10000.00
+"Malvaglia TI, Switzerland" hb9tmc.ddns.net 8073 10000.00
+"Presque Isle, WI USA" k9dxikiwi.proxy.kiwisdr.com 8073 10000.00
+"Assen | Netherlands" pb8w.proxy.kiwisdr.com 8073 10000.00
+"Big Bend Florida" 21079.proxy.kiwisdr.com 8073 10000.00
+"Holland, MA" sigmasdr.ddns.net 8074 10000.00
+"Pittsburgh Pennsylvania, USA" boomerthedog.com 8073 10000.00
+"Hanna Alberta" ve6hfd.proxy.kiwisdr.com 8073 10000.00
+"Peoria, Illinois" radio.ofadam.com 8073 10000.00
+"REUTE/AR SWITZERLAND" 62.2.184.6 8073 10000.00
+"LÃ¤tti BE, Switzerland" 89.236.168.82 8073 10000.00
+"Near Bristol, UK" g3sdh.com 8053 10000.00
+"Kungsbacka, Sweden___" kiwisdr.sm6muy.se 55102 10000.00
+"Rehobeth, Alabama" k4agr.hopto.org 8074 10000.00
+"Victoria, Australia" sdr-amradioantennas.com 8073 10000.00
+"Reinhold, PA" 22001.proxy.kiwisdr.com 8073 10000.00
+"Chelan, Washington" lcarc.proxy.kiwisdr.com 8073 10000.00
+"Holland, MA" sigmasdr.ddns.net 8075 10000.00
+"Holland, MA" sigmasdr.ddns.net 8076 10000.00
+"Allenspark, Colorado" 22048.proxy.kiwisdr.com 8073 10000.00
+"Crowley, TX EM12ho" sdr.ddns.net 8073 10000.00
+"Rudolph, Wisconsin" 22343.proxy.kiwisdr.com 8073 10000.00
+"Haren GRN, Netherlands" pa0ebc.proxy.kiwisdr.com 8073 10000.00
+"SÃ¶derÃ¥sen, SkÃ¥ne, Sweden" 90.230.255.183 8073 10000.00
+"French Alps" linkz.ddns.net 8075 10000.00
+"Loppi, Finland" oh1ct.sytes.net 8073 10000.00
+"Skanderborg, Denmark" 87.104.90.69 8073 10000.00
+"Kloosterhaar, Overijssel, The Netherlands" 21366.proxy.kiwisdr.com 8073 10000.00
+"Russell, Ontario, Canada" va3dxv.ca 8073 10000.00
+"Warrenton, Missouri" 67.6.202.83 8073 10000.00
+"Guipavas, France" kiwisdr.treguier.org 8073 10000.00
+"Victoria, Australia" sdr-amradioantennas.com 8076 10000.00
+"Crivitz, WI, USA" 21040.proxy.kiwisdr.com 8073 10000.00
+"Holland, MA" sigmasdr.ddns.net 8073 10000.00
+"Plymouth, MN" croton.proxy.kiwisdr.com 8073 10000.00
+"Near Bristol, UK" g3sdh.com 8054 10000.00
+"Maurice, LA" skip.land 8075 10000.00
+"Northfield Township, Michigan, USA" misdr.proxy.kiwisdr.com 8073 10000.00
+"Esbjerg, Denmark" 21086.proxy.kiwisdr.com 8073 10000.00
+"Castlebar, Co Mayo, Ireland" web888.minish.org 8075 10000.00
+"Wessex - KiwiSDR - G8JNJ - South West UK" wessex.zapto.org 8074 10000.00
+"near Corinne, Utah" kiwisdr1.sdrutah.org 8073 10000.00
+"Varberg, Sweden" 21271.proxy.kiwisdr.com 8073 10000.00
+"Germantown, WI" 22184.proxy.kiwisdr.com 8073 10000.00
+"Fareham, United Kingdom" m0nrg.ham-radio-op.net 8073 10000.00
+"Gurmels, Switzerland" 21115.proxy.kiwisdr.com 8073 10000.00
+"Malin, County Donegal, Ireland" malinheadkiwi.hopto.org 8073 10000.00
+"52249 Eschweiler - Germany" 84.44.173.154 8073 10000.00
+"Harwell, UK" 213.152.32.108 8073 10000.00
+"Knoxville, TN USA" kb5ag1.asuscomm.com 8074 10000.00
+"Atwater, OH" 21782.proxy.kiwisdr.com 8073 10000.00
+"Prince George. British Columbia, Canada" kiwisdr.ve7av.ca 8073 10000.00
+"Knoxville, Tennessee, USA" scottgs.com 8073 10000.00
+"Maurice, LA" skip.land 8073 10000.00
+"Edinburgh, Indiana, USA" 207.135.223.250 8078 10000.00
+"Mandeville, Louisiana" 21118.proxy.kiwisdr.com 8073 10000.00
+"Mazama, Washington, USA" mazama.proxy.kiwisdr.com 8073 10000.00
+"Weaubleau, Mo" 22193.proxy.kiwisdr.com 8073 10000.00
+"Twisp WA" mvr2.proxy.kiwisdr.com 8073 10000.00
+"Bracknell, 🇬🇧 United Kingdom" 21818.proxy.kiwisdr.com 8073 10000.00
+"Cape May County, NJ USA" 21610.proxy.kiwisdr.com 8073 10000.00
+"Jersey United Kingdom" antskiwisdr.zapto.org 8077 10000.00
+"French Alps" linkz.ddns.net 8073 10000.00
+"Brentwood, Essex, UK" sdr.gb0snb.com 8073 10000.00
+"Lodi, NY USA" 22036.proxy.kiwisdr.com 8073 10000.00
+"Mansfield Georgia USA" mansfieldga.ddns.net 8073 10000.00
+"Mala, Northern Sweden." aspliden.kostet.se 8074 10000.00
+"(51.821407, 7.918051)" dk0ep.proxy.kiwisdr.com 8073 10000.00
+"Pegnitz, Germany" berghuette.goip.de 8073 10000.00
+"Masterton, New Zealand" h9.proxy.kiwisdr.com 8073 10000.00
+"Poland" okno.ddns.net 8073 10000.00
+"Joensuu, Finland" kareliaswdx.ddns.net 8074 10000.00
+"Masterton, New Zealand" h1.proxy.kiwisdr.com 8073 10000.00
+"Esslingen, Germany" kiwi.dg3sdk.de 80 10000.00
+"Troutville, Virginia" 71.57.202.5 8073 10000.00
+"near Corinne, Utah" kiwisdr2.sdrutah.org 8074 10000.00
+"Hinwil,Switzerland" kiwiv2.hb9vqq.ch 8075 10000.00
+"Tavistock, Devon, UK" 81.168.1.206 8073 10000.00
+"Bülzig JO61jv" hnswerkstatt.dyndns.org 8073 10000.00
+"Lower Austria / Austria" oe3akb.ddns.net 8073 10000.00
+"Minneapolis USA" bikedork.myddns.me 8073 10000.00
+"Hamburg, Germany, 33m T2FD" 85.183.11.108 8073 10000.00
+"Sobikow, Poland" jm55.proxy.kiwisdr.com 8073 10000.00
+"De Kiel, Netherlands" pa8ad-1.proxy.kiwisdr.com 8073 10000.00
+"Tampere, Finland" tredxk.no-ip.org 8075 10000.00
+"Southern Alberta" 208.38.9.135 8074 10000.00
+"Traverse City, MI" kiwi.k8bmz.net 8073 10000.00
+"Iitti, Finland" oh2bua.fi 8075 10000.00
+"Switzerland Reute/AR" reute.dyndns-remote.com 8075 10000.00
+"near Corinne, Utah" kiwisdr3.sdrutah.org 8075 10000.00
+"Vallen, Ludvika, Sweden" 217.211.154.96 8073 10000.00
+"Alberta CANADA" 72.172.110.98 8175 10000.00
+"Lisbon, Portugal" cs5sel.proxy.kiwisdr.com 8073 10000.00
+"Hurricane (Northern Germany)" hurricane.ddns.me 8073 10000.00
+"Hooksiel, Germany" dl1bajkiwisdr.ddns.net 8073 10000.00
+"Marsangy (89), France" www.f5lfe.fr 8073 10000.00
+"Trent JO54EF, Germany" dl8las.dyndns.org 8074 10000.00
 "Woofferton" kiwisdr.johnnorton.co.uk 8073 10000.00
-"Lohja, Finland" sdxl-loh.ddns.net 8073 10000.00
-"Klazienaveen ,the Netherlands" 85.150.102.90 8073 10000.00
-"Victoria, Australia" 101.176.83.162 8073 10000.00
+"Haida Gwaii B.C. Canada" 23.235.74.104 8073 10000.00
+"Whitmore, California" kr6la.proxy.kiwisdr.com 8073 10000.00
+"West Bend, WI, USA" 21223.proxy.kiwisdr.com 8073 10000.00

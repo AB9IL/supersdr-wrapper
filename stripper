@@ -24,7 +24,11 @@ current_list = "kiwisdr_com.js"
 # filename of the unsorted list
 stripped_list = "kiwisdr_stripped.py"
 # filename of the sorter script
-sorter_scripts = {"kiwisdr_sorter.py", "sdr-stream-bookmarks.py"}
+sorter_scripts = {
+    "kiwisdr_sorter.py",
+    "sdr-stream-bookmarks.py",
+    "airband-bookmarks.py",
+}
 
 # These paths may be the same or different, depending
 # on where you set up your SuperSDR and other users
@@ -59,6 +63,9 @@ kiwi_semiproc = curent_path
 
 if time_now > max_age:
     print("Downloading a fresh list of KiwiSDRs")
+    os.system(
+        f"yad --timeout=10 --height=30 --width=400 --no-buttons --text-align=center --fixed --text='Downloading a fresh list of KiwiSDRs' &"
+    )
     # with requests.get(f"{url}{current_list}", stream=True) as list_file, \
     #   open(kiwi_semiproc, 'w') as out_file:
     #    out_file.write(list_file.text)
@@ -68,11 +75,13 @@ if time_now > max_age:
 with open(kiwi_semiproc, "r") as in_file, open(stripped_path, "w") as out_file:
     lines = in_file.readlines()
     out_file.write("dictlist = [\n")
-    out_file.writelines(lines[7:-1])
+    out_file.writelines(lines[7:-2])
+    out_file.write("]")
 
 # run scripts to use refined sdr data
 #
-# best sdrs according to SNR
+# sdrs sorted by snr and frequency bands
+# sorters must be executable and have shebang
 for sorter_script in sorter_scripts:
-    command = f"cd {kiwidata_dir}; python3 ./{sorter_script}"
+    command = f"cd {kiwidata_dir}; ./{sorter_script}"
     os.system(command)
