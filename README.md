@@ -72,7 +72,7 @@ SuperSDR Wrapper may be launched from your keyboard if you set up proper binding
 ```
 # Launch SuperSDR Wrapper with Super + s and ctrl / shift / alt keys
 super + s + {shift,ctrl,alt}
-    {radiostreamer gui,supersdr-wrapper --bookmarks --gui,supersdr-wrapper --servers --gui,supersdr-wrapper --airband --gui}
+    {supersdr-wrapper --bookmarks --gui,supersdr-wrapper --servers --gui,supersdr-wrapper --airband --gui}
 ```
 
 #### IMPORTANT
