@@ -14,31 +14,37 @@
 # enter urls into the "server" section of the working bookmarks list.
 #
 # NOTES:
-#  0) Channels are contained in a separate bookmarks template you should edit.
-#     Set up one channel per line in the format: "description" "server"
-#  1) Server types are "kiwi" for KiwiSDR or "web" for WebSDR
+#  0) Channels are contained in a separate file, "stations."
+#     Set up one channel per line in csv format:
+#     description,band,region,url,frequency,mode,sdrtype
+#  1) Server types are:
+#         "kiwi" for KiwiSDR
+#         "web" for WebSDR
+#         "phantom" for phantomsdr
+#         "openwebrx" for OpenWebRX
 #  2) WebSDR bookmarks must be manually formatted and entered in the template.
 #  3) KiwiSDR bookmarks are processed automatically using database information.
 #  4) A channel is focused on one subject of interest.
-#  5) A channel can contain one frequency from one server.
-#     A channel can also contain two servers, each tuned
-#     to the same or different frequencies.
-#  6) Enter the servers as a list of strings separated by
-#      a single space, formatted as:  "url frequency mode type"
-#  7) Server urls contain the domain, subdomain (if used),
-#     the port number, and trailing slash "/" (always used)
-#  8) Frequencies are in kHz; decimals are optional.
-#  9) Modes are: "cw", "lsb", "lsbw", "usb", "usbw", "am", "sam", "drm", "iq"
-# 10) The preferred AM mode is synchronous AM (sam).
-# 11) CW mode will default to "usb" with a 700 Hz offset
+#  5) NEW: A channel contains one frequency from one server.
+#  6) NEW: Bands are any of: 'Longwave', 'Mediumwave', 'Shortwave', 'VHFlow',
+#     'FMbroadcast', 'Airband', '2Meters'
+#  7) Enter the bookmark info as a list of strings separated by commas:
+#     BBC Radio 4 Longwave,Longwave,London,url,198,sam,kiwi
+#  8) The "url" entry will contain the domain, subdomain (if used),
+#     the port number, and trailing slash "/" (always used):
+#     http://example.com:8073/
+#  9) All frequencies must be saved as integer kHz.
+# 10) Modes are: "cw", "lsb", "lsbw", "usb", "usbw", "am", "sam", "drm", "iq"
+# 11) The preferred AM mode is synchronous AM (sam).
+# 12) CW mode will default to "usb" with a 750 Hz offset
 #     and a bandpass of 500 to 900 Hz.
-# 12) Extended Single Sideband is set for an 8000 Hz banpass.
+# 13) Extended Single Sideband is set for an 8000 Hz banpass.
 #     It should be designated as "lsbw" or "usbw".
-# 13) DRM is available and is set for a 10 kHz bandpass
+# 14) DRM is available and is set for a 10 kHz bandpass
 #
-# Example bookmark syntax: "description" "server" "server"
-# "Western Atlantic Routes" "http://raleigh.twrmon.net:8073/ 6577.00 usb kiwi""http://bottlebranch.proxy.kiwisdr.com:8073/ 6577.00 usb kiwi"
-# "BBC Radio 4 Longwave(WebSDR)" "http://websdr.ewi.utwente.nl:8901/ 198.00 am web"
+# Example bookmark syntax:
+# BBC Radio 4 Longwave,Longwave,London,http://80m.live:8073/,198,sam,kiwi
+# BBC Radio 4 Longwave(WebSDR),Longwave,London,http://websdr.ewi.utwente.nl:8901/,198,am,web
 #
 #MAP mode ####################################################################
 # Uses the Dyatlov Map Maker.
@@ -46,12 +52,9 @@
 # opened inthe web browser.
 #
 # SERVER SELECTOR mode #######################################################
-# Read from a list of KiwiSDR sites and open a stream in SuperSDR.
+# Read from a list of KiwiSDR and Web-888 sites and open a stream in SuperSDR.
 #
 # Note: The list is derived from the Dyatlov SDR Map database.
-#
-# Example bookmark syntax: "description" domain port frequency
-# "Raleigh area SDR on 300 foot longwire" raleigh.twrmon.net 8073 10000
 #
 # Specify the web browser command
 # generic browser on Xserver:
@@ -62,230 +65,186 @@
 #     browser='flatpak run com.brave.Browser'
 browser='x-www-browser --new-tab'
 
-# use SuperSDR if available
+# For KiwiSDR and Web-888 servers, use SuperSDR if available
 superpath="/usr/local/src/supersdr"
 use_supersdr=true
 
-# specify the bookmarks file for streaming
+# specify the bookmarks file
 BOOKMARKS_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks"
-TEMPLATE_FILE="/usr/local/src/kiwidata/sdr-stream-bookmarks-template"
 
-# specify the airband bookmark file and template for streaming
-AIRBAND_FILE="/usr/local/src/kiwidata/airband-bookmarks"
-AIRBAND_TEMPLATE_FILE="/usr/local/src/kiwidata/airband-template"
+# specify the BANDS file:
+BANDS_FILE="/usr/local/src/kiwidata/bands"
 
-# specify the bookmarks file for the server selector
+# specify the stations file
+STATIONS_FILE="/usr/local/src/kiwidata/stations"
+
+# specify the database file for the server selector
 SERVER_LIST="/usr/local/src/kiwidata/kiwiservers"
 
 # path to Dyatlov SDR map directory:
 MAPDIR="/usr/local/src/dyatlov"
 
-# KiwiSDR server data
+# KiwiSDR server data (for checking freshness)
 receiver_data="$MAPDIR/kiwisdr_com.js"
+
+# define the default frequency (kHz)
+default_freq=10000
 
 ###############################################################################
 # CAUTION: DRAGONS LIVE BELOW THIS LINE
 ###############################################################################
-start_bookmarks_streamer(){
-for target in field; do
-    # extract url fragments from target
-    read -r url freq mode server_type dummy <<< "$field"
-done
 
-# make mode lower case; set bandpass and zoom
-mode="${mode,,}"
-[[  "$mode" == "am" ]] && [[ "$server_type" == "kiwi" ]] && \
-    mode="sam" && bandpass="-4000,4000" && zoom="z10"
-[[  "$mode" == "amsync" ]] && [[ "$server_type" == "web" ]] && \
-    mode="am"
+# database update, if necessary
+stripper
+
+# Set gui mode, if selected
+[[ "$1" == "--gui" ]] && interface="gui"
+[[ "$2" == "--gui" ]] && interface="gui"
+[[ "$interface" ]] && export interface
+
+start_bookmarks_streamer() {
+    for target in $field; do
+        # extract url fragments from target
+        read -r url freq mode server_type dummy <<<"$field"
+    done
+
+    # make mode lower case; set bandpass and zoom
+    mode="${mode,,}"
+    [[ "$mode" == "am" ]] && [[ "$server_type" == "kiwi" ]] &&
+        mode="sam" && bandpass="-4000,4000" && zoom="z10"
+    [[ "$mode" == "amsync" ]] && [[ "$server_type" == "web" ]] &&
+        mode="am"
     # WebSDR default to envelope detector because not enough have am sync option
-[[  "$mode" == "cw" ]] && [[ "$server_type" == "kiwi" ]] && \
-    mode="usb" && bandpass="550,950" && \
-    freq=$(echo "$freq - 0.75" | bc) && zoom="z13"
+    [[ "$mode" == "cw" ]] && [[ "$server_type" == "kiwi" ]] &&
+        mode="usb" && bandpass="550,950" &&
+        freq=$(echo "$freq - 0.75" | bc) && zoom="z13"
     # KiwiSDR cw offset 750 Hz
-[[  "$mode" == "am" ]] && bandpass="-4000,4000" && zoom="z10"
-[[  "$mode" == "sam" ]] && bandpass="-4000,4000" && zoom="z10"
-[[  "$mode" == "drm" ]] && bandpass="-5000,5000" && zoom="z10"
-[[  "$mode" == "lsb" ]] && bandpass="-3500,-100" && zoom="z13"
-[[  "$mode" == "usb" ]] && bandpass="100,3500" && zoom="z13"
-[[  "$mode" == "lsbw" ]] && bandpass="-8000,-10" && zoom="z10" && mode="lsb"
-[[  "$mode" == "usbw" ]] && bandpass="10,8000" && zoom="z10" && mode="usb"
-[[  "$mode" == "iq" ]] && bandpass="-4000,4000" && zoom="z10"
+    [[ "$mode" == "am" ]] && bandpass="-4000,4000" && zoom="z10"
+    [[ "$mode" == "sam" ]] && bandpass="-4000,4000" && zoom="z10"
+    [[ "$mode" == "drm" ]] && bandpass="-5000,5000" && zoom="z10"
+    [[ "$mode" == "lsb" ]] && bandpass="-3500,-100" && zoom="z13"
+    [[ "$mode" == "usb" ]] && bandpass="100,3500" && zoom="z13"
+    [[ "$mode" == "lsbw" ]] && bandpass="-8000,-10" && zoom="z10" && mode="lsb"
+    [[ "$mode" == "usbw" ]] && bandpass="10,8000" && zoom="z10" && mode="usb"
+    [[ "$mode" == "iq" ]] && bandpass="-4000,4000" && zoom="z10"
 
-# connect to the SDR server
-case "$server_type" in
+    # connect to the SDR server
+    case "$server_type" in
     kiwi)
         # stream from KiwiSDRs with SuperSDR
-        domain="$(echo $url | awk -F: '{print substr($2,3)}')"
-        port="$(echo $url | awk -F: '{print substr($3,1,4)}')"
+        domain="$(echo "$url" | awk -F: '{print substr($2,3)}')"
+        port="$(echo "$url" | awk -F: '{print substr($3,1,4)}')"
+
         # send error notification and quit if domain is "example.com"
-        [[ "${domain}" == "example.com"  ]] && \
+        [[ "${domain}" == "example.com" ]] &&
             WINDOW=$(yad --timeout=10 --height=30 --width=400 \
-            --no-buttons --text-align=center --fixed \
-            --text="Exiting! No suitable server found." &)
-        [[ "${domain}" == "example.com"  ]] && exit
+                --no-buttons --text-align=center --fixed \
+                --text="Exiting! No suitable server found." &)
+        [[ "${domain}" == "example.com" ]] && exit
+
         # Stream from SuperSDR
         [[ "$use_supersdr" ]] && cd "$superpath" || exit
-        [[ "$use_supersdr" ]] && ./supersdr.py --kiwiserver ${domain} --kiwiport ${port} -f ${freq}
+        [[ "$use_supersdr" ]] && ./supersdr.py --kiwiserver "${domain}" --kiwiport "${port}" -f "${freq}"
+
         # stream from KiwiSDRs with web browser
-        [[ "$use_supersdr" ]] || ${browser} ${url}"?f="${freq}"/"${bandpass}${mode}${zoom}"&1hz"
+        [[ "$use_supersdr" ]] || ${browser} "${url}""?f=""${freq}""/""${bandpass}""${mode}""${zoom}""&1hz"
         ;;
     web)
-        # stream from a WebSDR
-        ${browser} ${url}"?tune="${freq}${mode}
+        # stream from WebSDR
+        ${browser} "${url}?tune=${freq}${mode}"
         ;;
-esac
+    pantom)
+        # stream from PhantomSDR
+        ${browser} "${url}?tune=${freq}000&modulation=${mode}"
+        ;;
+    openwebrx)
+        # stream from OpenWebRX198
+        ${browser} "${url}#freq=${freq}000,mod=${mode}"
+        ;;
+    esac
 }
 
-
-start_server_selector(){
-for target in field; do
-    # extract url fragments from target
-    read -r domain port frequency dummy <<< "$field"
-done
-
-# open the client and connect to the SDR server
-([[ "$use_supersdr" ]] && cd "$superpath" || exit; ./supersdr.py --kiwiserver "$domain" --kiwiport "$port" -f "$frequency")
-
-kill_radio
+sdrmap() {
+    ${browser} "file://${MAPDIR}/index.html"
 }
 
-sdrmap(){
-    new_cronjob () {
-        # automatically update the KiwiSDR database
-        sudo echo -e '#!/bin/bash\n11,41 * * * * user /usr/local/src/dyatlov/kiwisdr_com-update' | sudo tee /etc/cron.d/sdrmap
-        sudo chmod +x /etc/cron.d/sdrmap
-        sudo chmod 644 /etc/cron.d/sdrmap
-    }
-
-# updates server data if necessary
- [[ $(date +%s -r "${receiver_data}") -lt $(date +%s --date="45 min ago") ]] && \
-     echo "Updating server data..." && stripper
-
-# check for and set new cronjob as necessary
-# [[ -f "/etc/cron.d/sdrmap"  ]] || new_cronjob
-
-${browser} "file://${MAPDIR}/index.html"
-}
-
-kill_radio(){
+kill_radio() {
     # kill the processes after SuperSDR stops
     pkill -9 -f supersdr.py
     exit 0
 }
 
-
-[[ "$2" == "--gui" ]] && interface="gui"
-[[ "$interface" ]] && export interface
-
 case "$1" in
-    --bookmarks)
-        # trigger the updater
-        stripper
-        # read the bookmarks
-        readarray CHANNELS < $BOOKMARKS_FILE
+--bookmarks)
+    readarray BANDS <$BANDS_FILE
 
-        # Add an item for editing the list or stopping SuperSDR
-        CHANNELS+=('"Edit the Template"')
-        CHANNELS+=($'\n')
-        CHANNELS+=('"Stop SuperSDR"')
+    # open the band selection menu
+    [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 9"
+    [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
 
-        # open a menu
-        [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
-        [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
-        [[ "$interface" == "gui" ]] && COMMAND2="x-terminal-emulator -e vim ${TEMPLATE_FILE}"
-        [[ "$interface" == "gui" ]] || COMMAND2="vim ${TEMPLATE_FILE}"
-echo "${CHANNELS[@]}"
-        # Select the desired channel
-        CHOICE=$(echo "${CHANNELS[@]}" | sed '/^$/d;/#.*/d' | awk -F\" '{printf $2"\n"}' | $COMMAND )
+    # Select the desired band
+    BAND_CHOICE=$(echo "${BANDS[@]}" | awk -F, '{printf $1"\n"}' | $COMMAND)
 
-        [[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0
-        [[ "$CHOICE" == "Edit the Template" ]] && $COMMAND2 && exit 0
-        [[ "$CHOICE" == "Stop SuperSDR" ]] && kill_radio
+    [[ -z "$BAND_CHOICE" ]] && echo "No selection made, exiting..." && exit 0
 
-        # Get site urls, freq, and mode for the selected channel
-        CHECK=$(echo "${CHANNELS[@]}" | grep "$CHOICE")
 
-        # Open as many as two SDR instances
-        field=$(echo $CHECK | awk -F\" '{printf $4"\n"}')
-        [[ -z "$field"  ]] || start_bookmarks_streamer &
+    # read the bookmarks
+    readarray CHANNELS <$BOOKMARKS_FILE
 
-        field=$(echo $CHECK | awk -F\" '{printf $6"\n"}')
-        [[ -z "$field"  ]] || start_bookmarks_streamer &
-        ;;
-    --airband)
-        # read the bookmarks
-        readarray CHANNELS < $AIRBAND_FILE
+    # open the second menu
+    [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
+    [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
 
-        # Add an item for editing the list
-        CHANNELS+=("Edit the Template")
-        # Add an item for stopping SuperSDR
-        CHANNELS+=("Stop SuperSDR")
+    # Select the desired channel
+    CHOICE=$(echo "${CHANNELS[@]}" | sed '/^$/d;/#.*/d' | awk -F, '{printf $1" "$2" "$3" "$4" "$5" "$6"\n"}' | grep "$BAND_CHOICE" | $COMMAND)
 
-        # open a menu
-        [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
-        [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
-        [[ "$interface" == "gui" ]] && COMMAND2="x-terminal-emulator -e vim ${AIRBAND_TEMPLATE_FILE}"
-        [[ "$interface" == "gui" ]] || COMMAND2="vim ${AIRBAND_TEMPLATE_FILE}"
+    [[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0
 
-        # Select the desired channel
-        CHOICE=$(echo "${CHANNELS[@]}" | sed '/^$/d;/#.*/d' | awk -F\" '{printf $2"\n"}' | $COMMAND )
+    # read from the bookmarks list again and grep for the choice.
+    readarray CHANNELS <$BOOKMARKS_FILE
+    # stream from KiwiSDRs with SuperSDR
+    field="$(echo "${CHANNELS[@]}" | awk -F, '{printf $1" "$2" "$3" "$4" "$5" "$6"\n"}' | grep "$CHOICE" | sed 's/.*\(http:[^"]*\).*/\1/')"
+    [[ -z "$field" ]] || start_bookmarks_streamer &
+    ;;
+--servers)
+    # if no bookmarks, quit
+    [[ -z "$SERVER_LIST" ]] && echo "No server list, exiting..." && exit 0
 
-        [[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0
-        [[ "$CHOICE" == "Edit the Template" ]] && $COMMAND2 && exit 0
-        [[ "$CHOICE" == "Stop SuperSDR" ]] && kill_radio
+    # read from the server list
+    readarray SERVERS <$SERVER_LIST
 
-        # Get site urls, freq, and mode for the selected channel
-        CHECK=$(echo "${CHANNELS[@]}" | grep "$CHOICE")
+    # open a menu
+    [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
+    [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
 
-        # Open as many as two SDR instances
-        field=$(echo $CHECK | awk -F\" '{printf $4"\n"}')
-        [[ -z "$field"  ]] || start_bookmarks_streamer &
+    # Select the desired server
+    CHOICE=$(echo "${SERVERS[@]}" | sed '/^$/d;/#.*/d' | awk -F\" '{printf $2 $3"\n"}' | $COMMAND)
 
-        field=$(echo $CHECK | awk -F\" '{printf $6"\n"}')
-        [[ -z "$field"  ]] || start_bookmarks_streamer &
-        ;;
-    --servers)
-        # trigger the updater
-        stripper
-        # if no bookmarks, quit
-        [[ -z "$SERVER_LIST" ]] && echo "No server list, exiting..." && exit 0
+    # Exit if nothing selected
+    [[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0
 
-        # read the bookmarks
-        readarray SERVERS < $SERVER_LIST
-
-        # Create an entry to kill SuperSDR
-        SERVERS+=("Stop SuperSDR")
-
-        # open a menu
-        [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
-        [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
-
-        # Select the desired server
-        CHOICE=$(echo "${SERVERS[@]}" | sed '/^$/d;/#.*/d' | awk '{printf $0"\n"}' | $COMMAND )
-
-        # Exit if choice to stop SuperSDR
-        [[ "$CHOICE" == " Stop SuperSDR" ]] && echo "Exiting..." && kill_radio
-
-        # Exit if nothing selected
-        [[ -z "$CHOICE" ]] && echo "No selection made, exiting..." && exit 0
-
-        field=$(echo $CHOICE | awk -F\" '{printf $3"\n"}')
-        [[ -z "$field"  ]] || start_server_selector &
-        ;;
-    --map)
-        sdrmap
-        ;;
-    --kill)
-        kill_radio
-        ;;
-    *)
-        echo "
+    # read from the server list again and grep for the choice.
+    readarray SERVERS <$SERVER_LIST
+    # stream from KiwiSDRs with SuperSDR
+    field="$(echo "${SERVERS[@]}" |
+        awk -F\" '{printf $2 $3"\n"}' |
+        grep "$CHOICE" |
+        sed 's/.*\(http:[^ ]*\).*/\1/') $default_freq am kiwi"
+    # Connect to the server.
+    [[ -z "$field" ]] || start_bookmarks_streamer &
+    ;;
+--map)
+    sdrmap
+    ;;
+--kill)
+    kill_radio
+    ;;
+*)
+    echo "
     $0 <command> <interface>
 
     Commands:
     --bookmarks   Select a station from the bookmarks (server is auto selected)
-    --airband     Select a VHF Airband bookmark (server from a curated list)
     --servers     Select from currently running SDR servers
     --map         Open the global SDR map.
     --kill        Terminate instances of SuperSDR
@@ -296,7 +255,6 @@ echo "${CHANNELS[@]}"
     --gui runs menus in Rofi
 
         " >&2
-        exit 3
-        ;;
+    exit 3
+    ;;
 esac
-

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env pypy3
 
 # This script updates and sorts a list of the KiwiSDRs with the best SNR scored
 # and writes to a list usable for a local html page and SuperSDR.
@@ -7,10 +7,9 @@ from kiwisdr_stripped import dictlist
 
 # supersdr database
 supersdr_file = "/usr/local/src/kiwidata/kiwiservers"
-default_freq = "10000.00"
 
-# assigm freq limits (Hz)
-freq_range = (10000, 29999999)
+# assign freq limits (Hz).  Actual equipment limits may be much more broad.
+freq_range = (100000, 29999999)
 
 listcount = 150
 min_snr = 19
@@ -48,10 +47,10 @@ dictlist = dictlist[0:listcount]
 sdrlist = ([entry.get(item) for item in mykeys] for entry in dictlist)
 
 # build the SuperSDR database
-payload_3 = "# KiwiSDR bookmark format is...\n# server port frequency description\n"
+payload_3 = '# "description", server:port\n'
 for element in sdrlist:
-    output = f'"{element[1]}" {element[0]} {default_freq}\n'
-    payload_3 += output.replace("http://", "").replace(":", " ")
+    output = f'"{element[1]}" {element[0]}\n'
+    payload_3 += output
 
 # Opening a text file in write
 # mode using the open() function

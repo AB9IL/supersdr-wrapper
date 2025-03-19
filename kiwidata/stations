@@ -1,0 +1,109 @@
+118.100 Haneda TWR,Tokyo,url,118100,am,kiwi
+118.200 Narita TWR,Tokyo,url,118200,am,kiwi
+118.300 Yokota APP,Tokyo,url,118200,am,kiwi
+118.575 Haneda TWR,Tokyo,url,118575,am,kiwi
+119.100 Haneda APP,Tokyo,url,119100,am,kiwi
+119.650 Haneda APP,Tokyo,url,119650,am,kiwi
+120.500 Tokyo Control (Kanto West),Tokyo,url,120500,am,kiwi
+120.700 Yokota APP,Tokyo,url,120700,am,kiwi
+126.000 Haneda DEP,Tokyo,url,126000,am,kiwi
+128.400 Yokota ATIS,Tokyo,url,128400,am,kiwi
+128.800 Haneda ATIS,Tokyo,url,128800,am,kiwi
+133.600 Tokyo CTRL (Kanto East),Tokyo,url,133600,am,kiwi
+118.100 OKD Tower,Hokkaido,url,118100,am,kiwi
+118.800 CTS Tower,Hokkaido,url,118800,am,kiwi
+121.800 OKD GND,Hokkaido,url,121800,am,kiwi
+124.700 CTS DEP,Hokkaido,url,124700,am,kiwi
+127.500 ACC,Hokkaido,url,127500,am,kiwi
+128.325 ACC,Hokkaido,url,128325,am,kiwi
+128.600 CTS ATIS,Hokkaido,url,128600,am,kiwi
+120.000 Russian Air Force,Moscow,url,120000,am,kiwi
+122.700 Sheremetyevo Radar,Moscow,url,122700,am,kiwi
+127.200 Moscow Approach,Moscow,url,127200,am,kiwi
+127.500 Moscow Control,Moscow,url,127500,am,kiwi
+130.500 Moscow Control,Moscow,url,130500,am,kiwi
+131.200 Moscow APP,Moscow,url,131200,am,kiwi
+131.300 Vologda Control,Moscow,url,131300,am,kiwi
+131.500 Sheremetyevo TWR,Moscow,url,131500,am,kiwi
+131.675 AFL Control,Moscow,url,131675,am,kiwi
+132.725 Pobeda,Moscow,url,132725,am,kiwi
+135.500 Moscow Control,Moscow,url,135500,am,kiwi
+128.400 Yokota ATIS,Moscow,url,128400,am,kiwi
+119.100 Zurich Area,Zurich,url,119100,am,kiwi
+119.400 Zurich Area,Zurich,url,119400,am,kiwi
+119.700 Zurich Area,Zurich,url,119700,am,kiwi
+119.850 Zurich Area,Zurich,url,119850,am,kiwi
+120.100 Zurich Area,Zurich,url,120100,am,kiwi
+VOCM Corner Brook (English),Newfoundland,url,570,sam,kiwi
+CBN St. John's (Radio 1 English),Newfoundland,url,640,sam,kiwi
+CBY Corner Brook (Radio 1 English),Newfoundland,url,990,sam,kiwi
+CJAD Montreal (English),Montreal,url,800,sam,kiwi
+CFNV Montreal (French),Montreal,url,940,sam,kiwi
+CHOU Montreal (Arabic / French),Montreal,url,1450,sam,kiwi
+CKZW Montreal (English / French),Montreal,url,1650,sam,kiwi
+CKAC Montreal (French),Montreal,url,730,sam,kiwi
+CFRA Ottawa (English),Ottawa,url,580,sam,kiwi
+CKDO Oshawa (English),Oshawa,url,1580,sam,kiwi
+CFZM Toronto (English),Oshawa,url,740,sam,kiwi
+CJBC Toronto (French),Oshawa,url,860,sam,kiwi
+CFIQ Toronto (English),Oshawa,url,640,sam,kiwi
+CHML Toronto (English),Oshawa,url,900,sam,kiwi
+CFRW Winnipeg (English),Winnipeg,url,1290,sam,kiwi
+CBW Winnipeg (Radio 1 English),Winnipeg,url,990,sam,kiwi
+CJOB Winnipeg (English),Winnipeg,url,680,sam,kiwi
+CBK Watrous (Radio 1 English),Watrous,url,540,sam,kiwi
+CKUA Edmonton (English),Edmonton,url,580,sam,kiwi
+CKWX Vancouver (English),Vancouver,url,1130,sam,kiwi
+CBU Vancouver (Radio 1 English),Vancouver,url,690,sam,kiwi
+WILL Urbana Illinois,Chicago,url,580,sam,kiwi
+WCPT Chicago Illinois,Chicago,url,820,sam,kiwi
+WNYC New York,NewYork,url,820,sam,kiwi
+WNYC New York,NewYork,http://k3fef.com:8901/,820,am,web
+NPR Wisconsin,Wisconsin,url,970,sam,kiwi
+KGO San Francisco,San Francisco,url,810,sam,kiwi
+KKSF San Francisco,San Francisco,url,910,sam,kiwi
+Radio XL Shannon (IE),Shannon,url,1296,sam,kiwi
+Radio XL Dublin (IE),Dublin,url,1296,sam,kiwi
+BBC Radio 4 Longwave,London,url,198,sam,kiwi
+BBC Radio 4,London,url,720,sam,kiwi
+BBC Radio 5 Live (uTwente WebSDR),London,http://websdr.ewi.utwente.nl:8901/,693,am,web
+Radio Caroline,London,url,648,sam,kiwi
+Radio 208 Copenhagen,DenmarkArea,url,5970,sam,kiwi
+Radio Veronica (NL),Germany_Switzerland,url,5955,sam,kiwi
+Radio Veronica (NL on uTwente WebSDR),London,http://websdr.ewi.utwente.nl:8901/,5955,am,web
+Quran Radio 964 - Cairo,Cyprus,url,864,sam,kiwi
+Voice of Hope 1287 - Israel,Cyprus,url,1287,sam,kiwi
+ABC-Adelaide (AUS),SouthAustralia,url,972,sam,kiwi
+ABC-NewCastle (AUS),NewSouthWales,url,1233,sam,kiwi
+ABC-Sydney (AUS),NewSouthWales,url,702,sam,kiwi
+5AA Sports (AUS),SouthAustralia,url,1395,sam,kiwi
+Radio National Adelaide (AUS),SouthAustralia,url,729,sam,kiwi
+Radio National Sydney (AUS),NewSouthWales,url,576,sam,kiwi
+Radio New Zealand National - Auckland (NZ),NorthNewZealand,url,756,sam,kiwi
+Radio New Zealand National - Wellington (NZ),NorthNewZealand,url,567,sam,kiwi
+NHK Radio 1 - Tokyo (JP),Tokyo,url,594,sam,kiwi
+JOKR TBS - Tokyo (JP),Tokyo,url,954,sam,kiwi
+999Radio Bangkok (TH),Bangkok,url,999,sam,kiwi
+ZB News Talk - Auckland (NZ),NorthNewZealand,url,1080,sam,kiwi
+ZB News Talk - Wellington (NZ),NorthNewZealand,url,1025,sam,kiwi
+3630 Extended Single Sideband,Midwest,url,3630,lsbw,kiwi
+Prepper City North,Pennsylvania,url,3860,lsb,kiwi
+Prepper City South,Arkansas,url,3860,lsb,kiwi
+Prepper City West,Utah_Arizona,url,3860,lsb,kiwi
+Prepper City NorthWest,HFGCS_Northwest,url,3860,lsb,kiwi
+7200 IQ Mode (Midwest),Midwest,url,7200,iq,kiwi
+7200 IQ Mode (Northeast),Pennsylvania,url,7200,iq,kiwi
+3965 French DRM,France_Belgium,url,3965,drm,kiwi
+Brother Stair 5850,Midwest,url,5850,sam,kiwi
+Brother Stair 7570,Midwest,url,7570,sam,kiwi
+Hurricane Watch - 1,Southeast_US,url,14325,usb,kiwi
+Hurricane Watch - 2,Southeast_US,url,7268,lsb,kiwi
+Western Atlantic Routes,WATRS,url,6577,usb,kiwi
+Eastern Pacific Routes,CEPAC,url,5547,usb,kiwi
+North Atlantic Track System,NAT_West,url,5598,usb,kiwi
+Shannon VOLMET 5505,Shannon,url,5505,usb,kiwi
+Shannon VOLMET 8957 (Heppen PhantomSDR),Shannon,http://websdr.heppen.be/,8957,usb,phantom
+HFGCS West,HFGCS_Northwest,url,11175,usb,kiwi
+HFGCS West IQ,HFGCS_Northwest,url,11175,iq,kiwi
+HFGCS East,HFGCS_Northeast,url,11175,usb,kiwi
+HFGCS East IQ,HFGCS_Northeast,url,11175,iq,kiwi
