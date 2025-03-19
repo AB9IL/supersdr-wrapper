@@ -1,4 +1,4 @@
-#!/usr/bin/env pypy3
+#!/usr/bin/env python3
 
 # This script updates and sorts a list of the KiwiSDRs with the best SNR scored
 # and writes to a list usable for a local html page and SuperSDR.
