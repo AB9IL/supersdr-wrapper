@@ -17,7 +17,7 @@ import time
 import requests
 
 # minimum time between updates
-interval = 7200
+interval = 10800
 # filename of the updater script
 updater = "kiwisdr_com-update"
 # filename of the KiwiSDR list created by Dyatlov MapMaker
@@ -37,8 +37,8 @@ kiwidata_dir = "/usr/local/src/kiwidata/"
 # paths to the lists and sorterscripts
 curent_path = f"/usr/local/src/dyatlov/{current_list}"
 stripped_path = f"/usr/local/src/kiwidata/{stripped_list}"
-#sorter_path = "/usr/local/src/kiwidata/" + sorter_script
-#sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
+# sorter_path = "/usr/local/src/kiwidata/" + sorter_script
+# sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
 # base urls where the list can be downloaded
 # url = "http://rx.linkfanel.net/"
 # url = "https://rx.skywavelinux.com/"
@@ -47,16 +47,21 @@ stripped_path = f"/usr/local/src/kiwidata/{stripped_list}"
 #       Edit the variables above; avoid editing the code below
 ###############################################################################
 
+
 def read_filtered_lines(file_path):
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         for line in file:
             stripped_line = line.strip()
-            if stripped_line and not stripped_line.startswith('//') \
-                and not stripped_line.startswith('var') \
-                and not stripped_line.startswith('[') \
-                and not stripped_line.startswith(']') \
-                and not stripped_line.startswith(';'):
+            if (
+                stripped_line
+                and not stripped_line.startswith("//")
+                and not stripped_line.startswith("var")
+                and not stripped_line.startswith("[")
+                and not stripped_line.startswith("]")
+                and not stripped_line.startswith(";")
+            ):
                 yield line
+
 
 # age is measured in epoch seconds
 try:
@@ -71,17 +76,17 @@ kiwi_semiproc = curent_path
 
 if time_now > max_age:
     print("Downloading a fresh list of KiwiSDRs")
-    os.system(f"yad --timeout=10 --height=30 --width=400 --no-buttons --text-align=center --fixed --text='Downloading a fresh list of KiwiSDRs' &")
+    os.system(f"notify-send 'Downloading a fresh list of KiwiSDRs' &")
     command = f"cd /usr/local/src/dyatlov/; ./{updater}"
     os.system(command)
 
-with open(stripped_path, 'w') as out_file:
-    out_file.write('dictlist = [\n')
+with open(stripped_path, "w") as out_file:
+    out_file.write("dictlist = [\n")
     # Read and filter lines from the source file
     lines = read_filtered_lines(kiwi_semiproc)
     # Write the filtered lines to the destination file
     out_file.writelines(lines)
-    out_file.write(']')
+    out_file.write("]")
 
 # run scripts to use refined sdr data
 #

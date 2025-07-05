@@ -136,10 +136,8 @@ start_bookmarks_streamer() {
         port="$(echo "$url" | awk -F: '{print substr($3,1,4)}')"
 
         # send error notification and quit if domain is "example.com"
-        [[ "${domain}" == "example.com" ]] &&
-            WINDOW=$(yad --timeout=10 --height=30 --width=400 \
-                --no-buttons --text-align=center --fixed \
-                --text="Exiting! No suitable server found." &)
+        [[ "${domain}" == "example.com" ]] && \
+            notify-send "Exiting! No suitable server found." &
         [[ "${domain}" == "example.com" ]] && exit
 
         # Stream from SuperSDR
