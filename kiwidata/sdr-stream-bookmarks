@@ -1,75 +1,81 @@
-119.100 Zurich Area,Airband,http://31.31.62.2:8073/,119100,am,kiwi
-119.400 Zurich Area,Airband,http://31.31.62.2:8073/,119400,am,kiwi
-119.700 Zurich Area,Airband,http://31.31.62.2:8073/,119700,am,kiwi
-119.850 Zurich Area,Airband,http://31.31.62.2:8073/,119850,am,kiwi
-120.100 Zurich Area,Airband,http://31.31.62.2:8073/,120100,am,kiwi
-VOCM Corner Brook (English),Mediumwave,http://vy2hf.ddns.net:8073/,570,sam,kiwi
-CBN St. John's (Radio 1 English),Mediumwave,http://vy2hf.ddns.net:8073/,640,sam,kiwi
-CBY Corner Brook (Radio 1 English),Mediumwave,http://vy2hf.ddns.net:8073/,990,sam,kiwi
+119.100 Zurich Area,Airband,http://178.237.95.110:8073/,119100,am,kiwi
+119.400 Zurich Area,Airband,http://178.237.95.110:8073/,119400,am,kiwi
+119.700 Zurich Area,Airband,http://178.237.95.110:8073/,119700,am,kiwi
+119.850 Zurich Area,Airband,http://178.237.95.110:8073/,119850,am,kiwi
+120.100 Zurich Area,Airband,http://178.237.95.110:8073/,120100,am,kiwi
 CJAD Montreal (English),Mediumwave,http://21383.proxy.kiwisdr.com:8073/,800,sam,kiwi
-CFNV Montreal (French),Mediumwave,http://21383.proxy.kiwisdr.com:8073/,940,sam,kiwi
-CHOU Montreal (Arabic / French),Mediumwave,http://va3dxv.ca:8073/,1450,sam,kiwi
+CFNV Montreal (French),Mediumwave,http://209.91.186.16:8073/,940,sam,kiwi
+CHOU Montreal (Arabic / French),Mediumwave,http://209.91.186.16:8073/,1450,sam,kiwi
 CKZW Montreal (English / French),Mediumwave,http://209.91.186.16:8073/,1650,sam,kiwi
-CKAC Montreal (French),Mediumwave,http://21383.proxy.kiwisdr.com:8073/,730,sam,kiwi
+CKAC Montreal (French),Mediumwave,http://209.91.186.16:8073/,730,sam,kiwi
 CFRA Ottawa (English),Mediumwave,http://ve3hoa.ddns.net:8073/,580,sam,kiwi
-CKDO Oshawa (English),Mediumwave,http://jimlill.com:8073/,1580,sam,kiwi
-CFZM Toronto (English),Mediumwave,http://va3mw.dxcluster.org:8073/,740,sam,kiwi
-CJBC Toronto (French),Mediumwave,http://22347.proxy.kiwisdr.com:8073/,860,sam,kiwi
-CFIQ Toronto (English),Mediumwave,http://22347.proxy.kiwisdr.com:8073/,640,sam,kiwi
-CHML Toronto (English),Mediumwave,http://jimlill.com:8073/,900,sam,kiwi
-CBK Watrous (Radio 1 English),Mediumwave,http://ve5bms.proxy.kiwisdr.com:8073/,540,sam,kiwi
-CKUA Edmonton (English),Mediumwave,http://ve6hfd.proxy.kiwisdr.com:8073/,580,sam,kiwi
-CKWX Vancouver (English),Mediumwave,http://mvr1.proxy.kiwisdr.com:8073/,1130,sam,kiwi
-CBU Vancouver (Radio 1 English),Mediumwave,http://mvr2.proxy.kiwisdr.com:8073/,690,sam,kiwi
-WILL Urbana Illinois,Mediumwave,http://radio.ofadam.com:8073/,580,sam,kiwi
-WCPT Chicago Illinois,Mediumwave,http://21983.proxy.kiwisdr.com:8073/,820,sam,kiwi
-WNYC New York,Mediumwave,http://22001.proxy.kiwisdr.com:8073/,820,sam,kiwi
+CKDO Oshawa (English),Mediumwave,http://va3mw.dxcluster.org:8073/,1580,sam,kiwi
+CFZM Toronto (English),Mediumwave,http://22500.proxy.kiwisdr.com:8073/,740,sam,kiwi
+CJBC Toronto (French),Mediumwave,http://22500.proxy.kiwisdr.com:8073/,860,sam,kiwi
+CFIQ Toronto (English),Mediumwave,http://22500.proxy.kiwisdr.com:8073/,640,sam,kiwi
+CHML Toronto (English),Mediumwave,http://22500.proxy.kiwisdr.com:8073/,900,sam,kiwi
+CFRW Winnipeg (English),Mediumwave,http://24.78.154.153:8073/,1290,sam,kiwi
+CBW Winnipeg (Radio 1 English),Mediumwave,http://24.78.154.153:8073/,990,sam,kiwi
+CJOB Winnipeg (English),Mediumwave,http://24.78.154.153:8073/,680,sam,kiwi
+CBK Watrous (Radio 1 English),Mediumwave,http://ve6hfd.proxy.kiwisdr.com:8073/,540,sam,kiwi
+CKUA Edmonton (English),Mediumwave,http://ciw321.cfars.ca:8173/,580,sam,kiwi
+CKWX Vancouver (English),Mediumwave,http://kiwisdr.gadallah.net:8073/,1130,sam,kiwi
+CBU Vancouver (Radio 1 English),Mediumwave,http://kiwisdr.gadallah.net:8073/,690,sam,kiwi
+WILL Urbana Illinois,Mediumwave,http://sdr.k9mq.com:8073/,580,sam,kiwi
+WCPT Chicago Illinois,Mediumwave,http://sdr.k9mq.com:8073/,820,sam,kiwi
+WNYC New York,Mediumwave,http://kiwi-hartford.ddns.net:8074/,820,sam,kiwi
 WNYC New York,Mediumwave,http://k3fef.com:8901/,820,am,web
-NPR Wisconsin,Mediumwave,http://22184.proxy.kiwisdr.com:8073/,970,sam,kiwi
-KGO San Francisco,Mediumwave,http://bayarea.proxy.kiwisdr.com:8073/,810,sam,kiwi
-KKSF San Francisco,Mediumwave,http://73.235.139.64:8073/,910,sam,kiwi
-Radio XL Shannon (IE),Mediumwave,http://kiwi.minish.org:8073/,1296,sam,kiwi
-Radio XL Dublin (IE),Mediumwave,http://44.31.191.63:8073/,1296,sam,kiwi
-BBC Radio 4 Longwave,Longwave,http://websdr.uk:8060/,198,sam,kiwi
-BBC Radio 4,Mediumwave,http://websdr.uk:8060/,720,sam,kiwi
+NPR Wisconsin,Mediumwave,http://21040.proxy.kiwisdr.com:8073/,970,sam,kiwi
+KGO San Francisco,Mediumwave,http://73.12.134.247:8073/,810,sam,kiwi
+KKSF San Francisco,Mediumwave,http://21331.proxy.kiwisdr.com:8073/,910,sam,kiwi
+Radio XL Shannon (IE),Mediumwave,http://irelandnorthwest3.proxy.kiwisdr.com:8073/,1296,sam,kiwi
+Radio XL Dublin (IE),Mediumwave,http://185.142.30.101:80/,1296,sam,kiwi
+Alger Chaîne 3,Longwave,http://iz6198swl.proxy.kiwisdr.com:8073/,252,sam,kiwi
+Antena Satelor,Longwave,http://kiwi.web-sdr.at:8073/,153,sam,kiwi
+BBC Radio 4 Longwave,Longwave,http://wessex.hopto.org:8075/,198,sam,kiwi
+BBC Radio 4,Mediumwave,http://wessex.zapto.org:8074/,720,sam,kiwi
 BBC Radio 5 Live (uTwente WebSDR),Mediumwave,http://websdr.ewi.utwente.nl:8901/,693,am,web
-Radio Caroline,Mediumwave,http://21595.proxy.kiwisdr.com:8073/,648,sam,kiwi
-Radio 208 Copenhagen,Shortwave,http://90.230.255.183:8073/,5970,sam,kiwi
-Radio Veronica (NL),Shortwave,http://62.2.184.6:8073/,5955,sam,kiwi
+Polskie Radio I (Poland),Longwave,http://kiwi.web-sdr.at:8073/,225,sam,kiwi
+Radio Caroline,Mediumwave,http://wessex.hopto.org:8075/,648,sam,kiwi
+Radio 208 Copenhagen,Shortwave,http://21373.proxy.kiwisdr.com:8073/,5970,sam,kiwi
+Radio Veronica (NL),Shortwave,http://21115.proxy.kiwisdr.com:8073/,5955,sam,kiwi
 Radio Veronica (NL on uTwente WebSDR),Shortwave,http://websdr.ewi.utwente.nl:8901/,5955,am,web
-ABC-Adelaide (AUS),Mediumwave,http://vk1cm.ddns.net:8074/,972,sam,kiwi
-ABC-NewCastle (AUS),Mediumwave,http://vk2ggc.ddns.net:8073/,1233,sam,kiwi
-ABC-Sydney (AUS),Mediumwave,http://vk2ggc.ddns.net:8073/,702,sam,kiwi
-5AA Sports (AUS),Mediumwave,http://vk2ggc.ddns.net:8073/,1395,sam,kiwi
-Radio National Adelaide (AUS),Mediumwave,http://vk1cm.ddns.net:8074/,729,sam,kiwi
+Medi1 Radio (Morocco),Longwave,http://21900.proxy.kiwisdr.com:8073/,171,sam,kiwi
+Quran Radio 964 - Cairo,Mediumwave,http://cyp.twrmon.net:8073/,864,sam,kiwi
+Voice of Hope 1287 - Israel,Mediumwave,http://cyp.twrmon.net:8073/,1287,sam,kiwi
+ABC-Adelaide (AUS),Mediumwave,http://202.128.114.135:8073/,972,sam,kiwi
+ABC-NewCastle (AUS),Mediumwave,http://vk1cm.ddns.net:8074/,1233,sam,kiwi
+ABC-Sydney (AUS),Mediumwave,http://inner-west.proxy.rx-888.com:8073/,702,sam,kiwi
+5AA Sports (AUS),Mediumwave,http://202.128.114.135:8073/,1395,sam,kiwi
+Radio National Adelaide (AUS),Mediumwave,http://inner-west.proxy.rx-888.com:8073/,729,sam,kiwi
 Radio National Sydney (AUS),Mediumwave,http://vk2ggc.ddns.net:8073/,576,sam,kiwi
-Radio New Zealand National - Auckland (NZ),Mediumwave,http://h4.proxy.kiwisdr.com:8073/,756,sam,kiwi
-Radio New Zealand National - Wellington (NZ),Mediumwave,http://h6.proxy.kiwisdr.com:8073/,567,sam,kiwi
+Radio New Zealand National - Auckland (NZ),Mediumwave,http://kiwisdrzl1kfm.ddns.net:8073/,756,sam,kiwi
+Radio New Zealand National - Wellington (NZ),Mediumwave,http://kiwisdrzl1kfm.ddns.net:8073/,567,sam,kiwi
 NHK Radio 1 - Tokyo (JP),Mediumwave,http://21344.proxy.kiwisdr.com:8073/,594,sam,kiwi
-NHK Radio 1 - Tokyo (JP),Mediumwave,http://shibuya2nd.proxy.kiwisdr.com:8073/,594,sam,kiwi
-JOKR TBS - Tokyo (JP),Mediumwave,http://shibuya2nd.proxy.kiwisdr.com:8073/,954,sam,kiwi
-JOKR TBS - Tokyo (JP),Mediumwave,http://kiwisdr.hirokinet.com:8073/,954,sam,kiwi
+NHK Radio 1 - Tokyo (JP),Mediumwave,http://22299.proxy.kiwisdr.com:8073/,594,sam,kiwi
+JOKR TBS - Tokyo (JP),Mediumwave,http://21344.proxy.kiwisdr.com:8073/,954,sam,kiwi
+JOKR TBS - Tokyo (JP),Mediumwave,http://shibuya.proxy.kiwisdr.com:8073/,954,sam,kiwi
 999Radio Bangkok (TH),Mediumwave,http://la6lukiwisdrth.ddns.net:8073/,999,sam,kiwi
-ZB News Talk - Auckland (NZ),Mediumwave,http://h4.proxy.kiwisdr.com:8073/,1080,sam,kiwi
-ZB News Talk - Wellington (NZ),Mediumwave,http://h6.proxy.kiwisdr.com:8073/,1025,sam,kiwi
+ZB News Talk - Auckland (NZ),Mediumwave,http://kiwisdr.tko.zlwan.net:8073/,1080,sam,kiwi
+ZB News Talk - Wellington (NZ),Mediumwave,http://22337.proxy.kiwisdr.com:8073/,1025,sam,kiwi
 3630 Extended Single Sideband,Shortwave,http://w1ix.proxy.kiwisdr.com:8073/,3630,lsbw,kiwi
-Prepper City North,Shortwave,http://sdr.hfunderground.com:8073/,3860,lsb,kiwi
-Prepper City South,Shortwave,http://22164.proxy.kiwisdr.com:8073/,3860,lsb,kiwi
-Prepper City West,Shortwave,http://ka7oeikiwi.ddns.net:8073/,3860,lsb,kiwi
-Prepper City NorthWest,Shortwave,http://ka7u.no-ip.org:8073/,3860,lsb,kiwi
-7200 IQ Mode (Midwest),Shortwave,http://207.135.223.250:8078/,7200,iq,kiwi
-7200 IQ Mode (Northeast),Shortwave,http://w3piesdr.ddns.net:8073/,7200,iq,kiwi
-3965 French DRM,Shortwave,http://80m.live:8076/,3965,drm,kiwi
-Brother Stair 5850,Shortwave,http://207.135.223.250:8078/,5850,sam,kiwi
-Brother Stair 7570,Shortwave,http://207.135.223.250:8078/,7570,sam,kiwi
-Hurricane Watch - 1,Shortwave,http://21079.proxy.kiwisdr.com:8073/,14325,usb,kiwi
-Hurricane Watch - 2,Shortwave,http://21084.proxy.kiwisdr.com:8073/,7268,lsb,kiwi
-Western Atlantic Routes,Shortwave,http://k4jk-1.proxy.kiwisdr.com:8073/,6577,usb,kiwi
-Eastern Pacific Routes,Shortwave,http://69.27.184.58:8073/,5547,usb,kiwi
+Prepper City North,Shortwave,http://sdr.hfunderground.com:8074/,3860,lsb,kiwi
+Prepper City South,Shortwave,http://70.178.202.180:8073/,3860,lsb,kiwi
+Prepper City West,Shortwave,http://azwhtmtns.proxy.kiwisdr.com:8073/,3860,lsb,kiwi
+Prepper City NorthWest,Shortwave,http://21081.proxy.kiwisdr.com:8073/,3860,lsb,kiwi
+7200 IQ Mode (Midwest),Shortwave,http://21128.proxy.kiwisdr.com:8073/,7200,iq,kiwi
+7200 IQ Mode (Northeast),Shortwave,http://w3ilt.proxy.kiwisdr.com:8073/,7200,iq,kiwi
+3965 French DRM,Shortwave,http://g8ure.ddns.net:8073/,3965,drm,kiwi
+Brother Stair 5850,Shortwave,http://21763.proxy.kiwisdr.com:8073/,5850,sam,kiwi
+Brother Stair 7570,Shortwave,http://162.199.177.108:8073/,7570,sam,kiwi
+Hurricane Watch - 1,Shortwave,http://raleigh.twrmon.net:8073/,14325,usb,kiwi
+Hurricane Watch - 2,Shortwave,http://besedic1.servebeer.com:8073/,7268,lsb,kiwi
+Western Atlantic Routes,Shortwave,http://web888.servehttp.com:8074/,6577,usb,kiwi
+Eastern Pacific Routes,Shortwave,http://nevada.sytes.net:8073/,5547,usb,kiwi
 North Atlantic Track System,Shortwave,http://sdr.k1vl.com:8073/,5598,usb,kiwi
-Shannon VOLMET 5505,Shortwave,http://kiwi.minish.org:8073/,5505,usb,kiwi
+Shannon VOLMET 5505,Shortwave,http://web888.minish.org:8075/,5505,usb,kiwi
 Shannon VOLMET 8957 (Heppen PhantomSDR),Shortwave,http://websdr.heppen.be/,8957,usb,phantom
-HFGCS West,Shortwave,http://22033.proxy.kiwisdr.com:8073/,11175,usb,kiwi
-HFGCS West IQ,Shortwave,http://lcarc.proxy.kiwisdr.com:8073/,11175,iq,kiwi
-HFGCS East,Shortwave,http://sdr.k1vl.com:8078/,11175,usb,kiwi
-HFGCS East IQ,Shortwave,http://sdr.k1vl.com:8073/,11175,iq,kiwi
+HFGCS West,Shortwave,http://208.38.9.135:8073/,11175,usb,kiwi
+HFGCS West IQ,Shortwave,http://kiwisdr2.sdrutah.org:8074/,11175,iq,kiwi
+HFGCS East,Shortwave,http://sigmasdr.ddns.net:8076/,11175,usb,kiwi
+HFGCS East IQ,Shortwave,http://kiwisdr.njctech.com:8073/,11175,iq,kiwi

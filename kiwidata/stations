@@ -64,13 +64,17 @@ KGO San Francisco,San Francisco,url,810,sam,kiwi
 KKSF San Francisco,San Francisco,url,910,sam,kiwi
 Radio XL Shannon (IE),Shannon,url,1296,sam,kiwi
 Radio XL Dublin (IE),Dublin,url,1296,sam,kiwi
+Alger Chaîne 3,North_Africa,url,252,sam,kiwi
+Antena Satelor,Southeast_Europe,url,153,sam,kiwi
 BBC Radio 4 Longwave,London,url,198,sam,kiwi
 BBC Radio 4,London,url,720,sam,kiwi
 BBC Radio 5 Live (uTwente WebSDR),London,http://websdr.ewi.utwente.nl:8901/,693,am,web
+Polskie Radio I (Poland),Germany_Switzerland,url,225,sam,kiwi
 Radio Caroline,London,url,648,sam,kiwi
 Radio 208 Copenhagen,DenmarkArea,url,5970,sam,kiwi
 Radio Veronica (NL),Germany_Switzerland,url,5955,sam,kiwi
 Radio Veronica (NL on uTwente WebSDR),London,http://websdr.ewi.utwente.nl:8901/,5955,am,web
+Medi1 Radio (Morocco),North_Africa,url,171,sam,kiwi
 Quran Radio 964 - Cairo,Cyprus,url,864,sam,kiwi
 Voice of Hope 1287 - Israel,Cyprus,url,1287,sam,kiwi
 ABC-Adelaide (AUS),SouthAustralia,url,972,sam,kiwi
