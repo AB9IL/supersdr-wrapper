@@ -177,7 +177,7 @@ case "$1" in
     readarray BANDS <$BANDS_FILE
 
     # open the band selection menu
-    [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 9"
+    [[ "$interface" == "gui" ]] && COMMAND="rofi -i -dmenu -p Select -l 9"
     [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
 
     # Select the desired band
@@ -189,7 +189,7 @@ case "$1" in
     readarray CHANNELS <$BOOKMARKS_FILE
 
     # open the second menu
-    [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
+    [[ "$interface" == "gui" ]] && COMMAND="rofi -i -dmenu -p Select -l 20"
     [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
 
     # Select the desired channel
@@ -211,7 +211,7 @@ case "$1" in
     readarray SERVERS <$SERVER_LIST
 
     # open a menu
-    [[ "$interface" == "gui" ]] && COMMAND="rofi -dmenu -p Select -l 20"
+    [[ "$interface" == "gui" ]] && COMMAND="rofi -i -dmenu -p Select -l 20"
     [[ "$interface" == "gui" ]] || COMMAND="fzf --layout=reverse --header=Select:"
 
     # Select the desired server
