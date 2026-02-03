@@ -136,13 +136,16 @@ start_bookmarks_streamer() {
         port="$(echo "$url" | awk -F: '{print substr($3,1,4)}')"
 
         # send error notification and quit if domain is "example.com"
-        [[ "${domain}" == "example.com" ]] &&
+        [[ "${domain}" == "example.com" ]] && \
             notify-send "Exiting! No suitable server found." &
         [[ "${domain}" == "example.com" ]] && exit
 
+        # remove port option if kiwi site doesn't specify a port
+        [[ "${port}" ]] && PORTOPT="--kiwiport ${port}" || PORTOPT=""
+
         # Stream from SuperSDR
-        [[ "$use_supersdr" ]] && cd "$superpath" &&
-            ./supersdr.py --kiwiserver "${domain}" --kiwiport "${port}" -f "${freq}"
+        [[ "$use_supersdr" ]] && cd "$superpath" || exit
+        [[ "$use_supersdr" ]] && ./supersdr.py --kiwiserver "${domain}" "${PORTOPT}" -f "${freq}"
 
         # stream from KiwiSDRs with web browser
         [[ "$use_supersdr" ]] || ${browser} "${url}""?f=""${freq}""/""${bandpass}""${mode}""${zoom}""&1hz"
@@ -184,6 +187,7 @@ case "$1" in
     BAND_CHOICE=$(echo "${BANDS[@]}" | awk -F, '{printf $1"\n"}' | $COMMAND)
 
     [[ -z "$BAND_CHOICE" ]] && echo "No selection made, exiting..." && exit 0
+
 
     # read the bookmarks
     readarray CHANNELS <$BOOKMARKS_FILE
