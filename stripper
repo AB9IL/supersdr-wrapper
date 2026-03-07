@@ -22,8 +22,12 @@ interval = 7200
 updater = "kiwisdr_com-update"
 # filename of the KiwiSDR list created by Dyatlov MapMaker
 current_list = "kiwisdr_com.js"
-# filename of the unsorted list
+# filename of the static receiver list created by the user
+static_list = "static_rx.js"
+# filename of the unsorted list (cleaned)
 stripped_list = "kiwisdr_stripped.py"
+# filename of the static receiver list (cleaned)
+stripped_static_list = "static_rx.py"
 # filename of the sorter script
 sorter_scripts = {"kiwisdr_sorter.py", "sdr-stream-bookmarks.py"}
 
@@ -32,13 +36,17 @@ sorter_scripts = {"kiwisdr_sorter.py", "sdr-stream-bookmarks.py"}
 # of the data.
 
 # path to the kiwidata directory
-kiwidata_dir = "/usr/local/src/kiwidata/"
+kiwidata_dir = "/usr/local/src/kiwidata"
+# path to the dyatlov directory
+dyatlov_dir = "/usr/local/src/dyatlov"
 
 # paths to the lists and sorterscripts
-curent_path = f"/usr/local/src/dyatlov/{current_list}"
-stripped_path = f"/usr/local/src/kiwidata/{stripped_list}"
-#sorter_path = "/usr/local/src/kiwidata/" + sorter_script
-#sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
+current_path = f"{dyatlov_dir}/{current_list}"
+static_path = f"{dyatlov_dir}/{static_list}"
+stripped_path = f"{kiwidata_dir}/{stripped_list}"
+stripped_static_path = f"{kiwidata_dir}/{stripped_static_list}"
+# sorter_path = "/usr/local/src/kiwidata/" + sorter_script
+# sdrstreamer_path = "/usr/local/src/kiwidata/" + sdrstreamer_script
 # base urls where the list can be downloaded
 # url = "http://rx.linkfanel.net/"
 # url = "https://rx.skywavelinux.com/"
@@ -47,43 +55,54 @@ stripped_path = f"/usr/local/src/kiwidata/{stripped_list}"
 #       Edit the variables above; avoid editing the code below
 ###############################################################################
 
+
 def read_filtered_lines(file_path):
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         for line in file:
             stripped_line = line.strip()
-            if stripped_line and not stripped_line.startswith('//') \
-                and not stripped_line.startswith('var') \
-                and not stripped_line.startswith('[') \
-                and not stripped_line.startswith(']') \
-                and not stripped_line.startswith(';') \
-                and not stripped_line.endswith(':') \
-                and '"  ' not in stripped_line:
+            if (
+                stripped_line
+                and not stripped_line.startswith("//")
+                and not stripped_line.startswith("var")
+                and not stripped_line.startswith("[")
+                and not stripped_line.startswith("]")
+                and not stripped_line.startswith(";")
+            ):
                 yield line
+
 
 # age is measured in epoch seconds
 try:
-    creation_time = os.path.getctime(curent_path)
+    creation_time = os.path.getctime(current_path)
 except Exception:
     creation_time = 0
 
 max_age = creation_time + interval
 time_now = time.time()
 
-kiwi_semiproc = curent_path
-
 if time_now > max_age:
     print("Downloading a fresh list of KiwiSDRs")
     os.system(f"notify-send 'Downloading a fresh list of KiwiSDRs' &")
-    command = f"cd /usr/local/src/dyatlov/; ./{updater}"
+    command = f"cd {dyatlov_dir}; ./{updater}"
     os.system(command)
 
-with open(stripped_path, 'w') as out_file:
-    out_file.write('dictlist = [\n')
+# Process the KiwiSDR list
+with open(stripped_path, "w") as out_file:
+    out_file.write("dictlist = [\n")
     # Read and filter lines from the source file
-    lines = read_filtered_lines(kiwi_semiproc)
+    lines = read_filtered_lines(current_path)
     # Write the filtered lines to the destination file
     out_file.writelines(lines)
-    out_file.write(']')
+    out_file.write("]")
+
+# Process the Static receiver list
+with open(stripped_static_path, "w") as out_file:
+    out_file.write("dictstatic = [\n")
+    # Read and filter lines from the source file
+    lines = read_filtered_lines(static_path)
+    # Write the filtered lines to the destination file
+    out_file.writelines(lines)
+    out_file.write("]")
 
 # run scripts to use refined sdr data
 #
