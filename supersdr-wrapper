@@ -162,6 +162,10 @@ start_bookmarks_streamer() {
         # stream from OpenWebRX198
         ${browser} "${url}#freq=${freq}000,mod=${mode}"
         ;;
+    uber)
+        # stream from UberSDR
+        ${browser} "${url}?freq=${freq}000&mode=${mode}&zoom_freq=${freq}000&zoom_bw=100.0"
+        ;;
     esac
 }
 

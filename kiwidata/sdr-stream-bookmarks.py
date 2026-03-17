@@ -153,6 +153,9 @@ def make_link(dictlist, index, area):
     elif "openwebrx" == sdrtype and index == 0:
         output = f"{description},{band},{url},{frequency},{mode},{sdrtype}\n"
 
+    elif "uber" == sdrtype and index == 0:
+        output = f"{description},{band},{url},{frequency},{mode},{sdrtype}\n"
+
     else:
         output = ""
     if len(output) > 3:
