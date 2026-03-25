@@ -510,7 +510,7 @@ dictstatic = [
     },
     {
         "name":"LF/MF/HF UberSDR, Milford, PA, USA",
-        "url":"http://novasdr.k3fef.com:9002/?frequency=10000000&modulation=AM",
+        "url":"http://ubersdr.k3fef.com/?freq=1000000&mode=am&bwl=-5000&bwh=5000&zoom_freq=1000000&zoom_bw=100.0",
         "gps":"(41.2417,-075.0500)",
         "bands":"0-30000000",
         "users_max":"800",
